@@ -111,3 +111,33 @@
 /* Magnetic Wrappers */
 .magnetic-wrap { display: inline-block; }
 .magnetic { transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1); will-change: transform; }
+
+/* tambahan sedikit custom */
+/* Global Smooth Glow Background */
+body {
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(245,158,11,0.10), transparent 70%);
+    filter: blur(140px);
+    z-index: -1;
+    pointer-events: none;
+    animation: bgFloat 25s ease-in-out infinite;
+}
+
+.dark body::before {
+    background: radial-gradient(circle, rgba(245,158,11,0.06), transparent 70%);
+}
+
+@keyframes bgFloat {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-80px, 60px); }
+}
