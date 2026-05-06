@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luvi Asakura  | Portfolio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ============================================
+           THEME VARIABLE SYSTEM
+        ============================================ */
+        :root {
+            --bg:           #f3f3f1;
+            --card:         #ffffff;
+            --text:         #2d2d2a;
+            --subtext:      #8a8a86;
+            --border:       #e8e8e5;
+            --accent:       #e65c5c;
+            --accent2:      #f09070;
+            --shadow-color: rgba(0,0,0,0.07);
+            --hover-shadow: rgba(0,0,0,0.14);
+            --card-shadow:  6px 6px 0 #e8e8e5;
+            --nav-bg:       rgba(255,255,255,0.85);
+            --tag-bg:       #f0f0ed;
+            --halftone:     none;
+            --border-style: 1px solid var(--border);
+            --border-radius-card: 2.5rem;
+            --font-weight-title: 700;
+            --font-weight-body: 500;
+            --text-transform: none;
+            --letter-spacing: normal;
+        }
+
+        /* === THEME: COMIC DARK === */
+        [data-theme="comic"] {
+            --bg:           #0b0f19;
+            --card:         #151c2c;
+            --text:         #f8fafc;
+            --subtext:      #94a3b8;
+            --border:       #334155;
+            --accent:       #00f0ff;
+            --accent2:      #ff0055;
+            --shadow-color: #00f0ff;
+            --hover-shadow: #ff0055;
+            --card-shadow:  6px 6px 0 #334155;
+            --nav-bg:       rgba(21,28,44,0.92);
+            --tag-bg:       #0b0f19;
+            --halftone:     radial-gradient(#334155 2px, transparent 2px);
+            --border-style: 2px solid var(--border);
+            --border-radius-card: 2rem;
+            --font-weight-title: 900;
+            --font-weight-body: 700;
+            --text-transform: uppercase;
+            --letter-spacing: 0.05em;
+        }
+
+        /* === THEME: FOREST === */
+        [data-theme="forest"] {
+            --bg:           #f0f5f0;
+            --card:         #ffffff;
+            --text:         #1a2e1a;
+            --subtext:      #5a7a5a;
+            --border:       #c8dcc8;
+            --accent:       #2d7d46;
+            --accent2:      #7bc67e;
+            --shadow-color: rgba(45,125,70,0.12);
+            --hover-shadow: rgba(45,125,70,0.22);
+            --card-shadow:  6px 6px 0 #c8dcc8;
+            --nav-bg:       rgba(240,245,240,0.88);
+            --tag-bg:       #e8f0e8;
+            --halftone:     none;
+            --border-style: 1px solid var(--border);
+            --border-radius-card: 1.5rem;
+            --font-weight-title: 800;
+            --font-weight-body: 500;
+            --text-transform: none;
+            --letter-spacing: -0.01em;
+        }
+
+        /* === THEME: OCEAN === */
+        [data-theme="ocean"] {
+            --bg:           #e8f4f8;
+            --card:         #ffffff;
+            --text:         #0c2a40;
+            --subtext:      #4a7a96;
+            --border:       #b8d8e8;
+            --accent:       #0077b6;
+            --accent2:      #48cae4;
+            --shadow-color: rgba(0,119,182,0.12);
+            --hover-shadow: rgba(0,119,182,0.22);
+            --card-shadow:  6px 6px 0 #b8d8e8;
+            --nav-bg:       rgba(232,244,248,0.88);
+            --tag-bg:       #d8edf5;
+            --halftone:     none;
+            --border-style: 1px solid var(--border);
+            --border-radius-card: 2rem;
+            --font-weight-title: 700;
+            --font-weight-body: 500;
+            --text-transform: none;
+            --letter-spacing: -0.02em;
+        }
+
+        /* === THEME: SUNSET === */
+        [data-theme="sunset"] {
+            --bg:           #fff8f0;
+            --card:         #ffffff;
+            --text:         #2a1500;
+            --subtext:      #8a5a30;
+            --border:       #f0d8b8;
+            --accent:       #e07030;
+            --accent2:      #f0a830;
+            --shadow-color: rgba(224,112,48,0.1);
+            --hover-shadow: rgba(224,112,48,0.2);
+            --card-shadow:  6px 6px 0 #f0d8b8;
+            --nav-bg:       rgba(255,248,240,0.88);
+            --tag-bg:       #fdf0e0;
+            --halftone:     none;
+            --border-style: 1px solid var(--border);
+            --border-radius-card: 3rem;
+            --font-weight-title: 800;
+            --font-weight-body: 500;
+            --text-transform: none;
+            --letter-spacing: -0.01em;
+        }
+
+        /* === THEME: MONO === */
+        [data-theme="mono"] {
+            --bg:           #f5f5f5;
+            --card:         #ffffff;
+            --text:         #000000;
+            --subtext:      #666666;
+            --border:       #000000;
+            --accent:       #000000;
+            --accent2:      #555555;
+            --shadow-color: rgba(0,0,0,1);
+            --hover-shadow: rgba(0,0,0,1);
+            --card-shadow:  5px 5px 0 #000000;
+            --nav-bg:       rgba(245,245,245,0.92);
+            --tag-bg:       #eeeeee;
+            --halftone:     none;
+            --border-style: 2px solid #000000;
+            --border-radius-card: 0.5rem;
+            --font-weight-title: 900;
+            --font-weight-body: 500;
+            --text-transform: none;
+            --letter-spacing: -0.03em;
+        }
+
+        /* === THEME: LAVENDER === */
+        [data-theme="lavender"] {
+            --bg:           #f5f0ff;
+            --card:         #ffffff;
+            --text:         #1a0a3a;
+            --subtext:      #6a4a9a;
+            --border:       #d8c8f8;
+            --accent:       #7c3aed;
+            --accent2:      #a78bfa;
+            --shadow-color: rgba(124,58,237,0.1);
+            --hover-shadow: rgba(124,58,237,0.2);
+            --card-shadow:  6px 6px 0 #d8c8f8;
+            --nav-bg:       rgba(245,240,255,0.88);
+            --tag-bg:       #ede8ff;
+            --halftone:     none;
+            --border-style: 1px solid var(--border);
+            --border-radius-card: 2.5rem;
+            --font-weight-title: 700;
+            --font-weight-body: 500;
+            --text-transform: none;
+            --letter-spacing: -0.01em;
+        }
+
+        /* ============================================
+           BASE STYLES
+        ============================================ */
+        *, *::before, *::after { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: default;
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        [data-theme="comic"] body,
+        body[data-theme="comic"] {
+            background-image: var(--halftone);
+            background-size: 24px 24px;
+        }
+        html[data-theme="comic"] body {
+            background-image: radial-gradient(#334155 2px, transparent 2px);
+            background-size: 24px 24px;
+        }
+
+        /* ============================================
+           COMPONENT STYLES USING CSS VARIABLES
+        ============================================ */
+
+        .t-bg       { background-color: var(--bg) !important; }
+        .t-card     { background-color: var(--card) !important; }
+        .t-text     { color: var(--text) !important; }
+        .t-subtext  { color: var(--subtext) !important; }
+        .t-accent   { color: var(--accent) !important; }
+        .t-accent-bg { background-color: var(--accent) !important; }
+        .t-accent2  { color: var(--accent2) !important; }
+        .t-border   { border: var(--border-style) !important; }
+        .t-tag-bg   { background-color: var(--tag-bg) !important; }
+
+        .t-card-shadow {
+            box-shadow: var(--card-shadow);
+            transition: box-shadow 0.3s, transform 0.3s;
+        }
+        .t-card-shadow:hover {
+            box-shadow: 10px 10px 0 var(--accent);
+            transform: translate(-3px, -3px);
+        }
+
+        .t-radius { border-radius: var(--border-radius-card); }
+
+        .nav-glass {
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px);
+            border: var(--border-style);
+            box-shadow: 0 4px 24px var(--shadow-color);
+        }
+
+        .tag-pill {
+            background-color: var(--tag-bg);
+            color: var(--text);
+            border: var(--border-style);
+            border-radius: 0.75rem;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: var(--font-weight-body);
+            cursor: default;
+            transition: all 0.2s;
+        }
+        .tag-pill:hover {
+            background-color: var(--accent);
+            color: var(--card);
+        }
+
+        .skill-category-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            border-left: 3px solid var(--accent);
+            padding-left: 0.6rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: var(--font-weight-title);
+            color: var(--text);
+            text-transform: var(--text-transform);
+            letter-spacing: var(--letter-spacing);
+        }
+
+        .btn-primary {
+            background-color: var(--text);
+            color: var(--card);
+            border: var(--border-style);
+            border-color: var(--text);
+            border-radius: 1rem;
+            padding: 0.75rem 1.75rem;
+            font-weight: 700;
+            text-transform: var(--text-transform);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-primary:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        .btn-secondary {
+            background-color: var(--tag-bg);
+            color: var(--text);
+            border: var(--border-style);
+            border-radius: 1rem;
+            padding: 0.75rem 1.75rem;
+            font-weight: 700;
+            text-transform: var(--text-transform);
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .btn-secondary:hover {
+            background-color: var(--card);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        /* ============================================
+           THEME SWITCHER PANEL
+        ============================================ */
+        #theme-panel {
+            position: fixed;
+            right: 1.25rem;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .theme-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .theme-dot:hover, .theme-dot.active {
+            transform: scale(1.25);
+            border-color: var(--text);
+        }
+        .theme-dot .theme-label {
+            position: absolute;
+            right: calc(100% + 10px);
+            background-color: var(--card);
+            color: var(--text);
+            font-size: 0.65rem;
+            font-weight: 700;
+            white-space: nowrap;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: var(--border-style);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            box-shadow: 2px 2px 0 var(--border);
+        }
+        .theme-dot:hover .theme-label {
+            opacity: 1;
+        }
+
+        /* ============================================
+           ANIMATIONS
+        ============================================ */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+        @keyframes swing {
+            0% { transform: rotate(-4deg); }
+            100% { transform: rotate(4deg); }
+        }
+        @keyframes spin-slow {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse-accent {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .float-slow   { animation: float 6s ease-in-out infinite; }
+        .float-med    { animation: float 5s ease-in-out infinite; }
+        .float-fast   { animation: float 4s ease-in-out infinite; }
+        .swing-1      { animation: swing 4s ease-in-out infinite alternate; transform-origin: top center; }
+        .swing-2      { animation: swing 5s ease-in-out infinite alternate-reverse; transform-origin: top center; animation-delay: -1.5s; }
+        .swing-3      { animation: swing 4.5s ease-in-out infinite alternate; transform-origin: top center; animation-delay: -0.7s; }
+        .spin-slow    { animation: spin-slow 12s linear infinite; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+
+        /* ============================================
+           PHOTO CARD
+        ============================================ */
+        .photo-card {
+            background-color: var(--card);
+            padding: 0.75rem;
+            border-radius: 1.25rem;
+            border: var(--border-style);
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+        .photo-card:hover {
+            transform: rotate(0deg) scale(1.04);
+            box-shadow: 10px 10px 0 var(--accent);
+        }
+
+        .pin-dot {
+            width: 12px; height: 12px;
+            background: radial-gradient(circle at 35% 35%, #fff, var(--accent));
+            border-radius: 50%;
+            position: absolute;
+            top: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            border: 2px solid var(--card);
+        }
+
+        .hanging-wire {
+            width: 1.5px;
+            background: linear-gradient(to bottom, var(--subtext), transparent);
+            margin: 0 auto;
+        }
+
+        /* ============================================
+           CASE STUDY ITEMS
+        ============================================ */
+        .case-item {
+            background-color: var(--tag-bg);
+            border: var(--border-style);
+            border-radius: 1.25rem;
+            padding: 1.25rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .case-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px var(--shadow-color);
+        }
+
+        /* ============================================
+           PROCESS STEP
+        ============================================ */
+        .process-step {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 1rem;
+            border: 1.5px solid transparent;
+            transition: all 0.25s ease;
+            flex: 1;
+        }
+        .process-step:hover {
+            background-color: var(--tag-bg);
+            border-color: var(--accent);
+        }
+        .process-icon {
+            width: 48px; height: 48px;
+            background-color: var(--tag-bg);
+            border: var(--border-style);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 0.5rem;
+            transition: all 0.25s;
+            color: var(--subtext);
+        }
+        .process-step:hover .process-icon {
+            background-color: var(--accent);
+            color: var(--card);
+            border-color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        /* ============================================
+           CURSOR GLOW
+        ============================================ */
+        #cursor-glow {
+            width: 280px; height: 280px;
+            background: radial-gradient(circle, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 70%);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: multiply;
+            transition: left 0.12s ease-out, top 0.12s ease-out;
+        }
+        [data-theme="comic"] #cursor-glow {
+            mix-blend-mode: screen;
+        }
+
+        /* ============================================
+           STATUS BADGE
+        ============================================ */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background-color: var(--card);
+            border: var(--border-style);
+            padding: 0.4rem 1rem;
+            border-radius: 9999px;
+            box-shadow: 0 2px 10px var(--shadow-color);
+        }
+        .status-dot {
+            width: 8px; height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            animation: pulse-accent 2s infinite;
+        }
+
+        /* ============================================
+           METRIC BADGE
+        ============================================ */
+        .metric-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background-color: rgba(34,197,94,0.1);
+            border: 1.5px solid rgba(34,197,94,0.4);
+            color: #16a34a;
+            padding: 0.3rem 0.7rem;
+            border-radius: 0.75rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .metric-badge-blue {
+            background-color: color-mix(in srgb, var(--accent) 10%, transparent);
+            border: 1.5px solid color-mix(in srgb, var(--accent) 35%, transparent);
+            color: var(--accent);
+        }
+
+        /* ============================================
+           TESTIMONIAL CARD
+        ============================================ */
+        .testimonial-card {
+            position: relative;
+            background-color: var(--card);
+            border: var(--border-style);
+            border-radius: var(--border-radius-card);
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            box-shadow: 10px 10px 0 var(--accent);
+            transform: translate(-3px, -3px);
+        }
+
+        /* ============================================
+           FEATURE CARD
+        ============================================ */
+        .feature-card {
+            background-color: var(--card);
+            border: var(--border-style);
+            border-radius: 1.75rem;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .feature-card:hover {
+            box-shadow: 8px 8px 0 var(--accent);
+            transform: translate(-3px, -3px);
+        }
+        .feature-icon {
+            width: 48px; height: 48px;
+            background: color-mix(in srgb, var(--accent) 12%, transparent);
+            border: var(--border-style);
+            border-color: color-mix(in srgb, var(--accent) 30%, transparent);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent);
+            margin: 0 auto 1rem;
+        }
+
+        /* ============================================
+           NAV LINK
+        ============================================ */
+        .nav-link {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--subtext);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-link:hover { color: var(--accent); }
+
+        /* ============================================
+           HERO
+        ============================================ */
+        .hero-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            color: var(--text);
+            line-height: 1;
+            text-shadow: 4px 4px 0 color-mix(in srgb, var(--accent) 20%, transparent);
+        }
+
+        .hero-role-card {
+            background: color-mix(in srgb, var(--card) 80%, transparent);
+            backdrop-filter: blur(12px);
+            border: var(--border-style);
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            display: inline-block;
+            box-shadow: 0 8px 24px var(--shadow-color);
+        }
+
+        /* ============================================
+           PROJECT CARD
+        ============================================ */
+        .project-card {
+            background-color: var(--card);
+            border: var(--border-style);
+            border-radius: var(--border-radius-card);
+            padding: 1.5rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .project-card:hover {
+            box-shadow: 10px 10px 0 var(--accent);
+            transform: translate(-3px, -3px);
+        }
+        .project-thumb {
+            aspect-ratio: 16/9;
+            background-color: var(--tag-bg);
+            border: var(--border-style);
+            border-radius: 1rem;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: var(--accent);
+        }
+
+        /* ============================================
+           SECTION DIVIDER
+        ============================================ */
+        .section-divider {
+            border: none;
+            border-top: var(--border-style);
+            margin: 0;
+        }
+
+        /* ============================================
+           QUOTE BLOCK
+        ============================================ */
+        .quote-block {
+            font-style: italic;
+            border-left: 4px solid var(--accent);
+            padding-left: 0.75rem;
+            color: var(--subtext);
+            font-size: 0.8rem;
+            font-weight: var(--font-weight-body);
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================
+           THEME TRANSITION
+        ============================================ */
+        *, *::before, *::after {
+            transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+        }
+        /* Exception: don't slow down transforms */
+        .float-slow, .float-med, .float-fast, .swing-1, .swing-2, .swing-3, .spin-slow {
+            transition: none;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Cursor Glow -->
+<div id="cursor-glow" class="hidden md:block"></div>
+
+<!-- Theme Switcher Panel -->
+<div id="theme-panel" class="hidden md:flex">
+    <div class="theme-dot active" data-t="light" style="background: linear-gradient(135deg,#f3f3f1,#e65c5c)">
+        <span class="theme-label">☀️ Light</span>
+    </div>
+    <div class="theme-dot" data-t="comic" style="background: linear-gradient(135deg,#0b0f19,#00f0ff)">
+        <span class="theme-label">🎨 Comic</span>
+    </div>
+    <div class="theme-dot" data-t="forest" style="background: linear-gradient(135deg,#f0f5f0,#2d7d46)">
+        <span class="theme-label">🌿 Forest</span>
+    </div>
+    <div class="theme-dot" data-t="ocean" style="background: linear-gradient(135deg,#e8f4f8,#0077b6)">
+        <span class="theme-label">🌊 Ocean</span>
+    </div>
+    <div class="theme-dot" data-t="sunset" style="background: linear-gradient(135deg,#fff8f0,#e07030)">
+        <span class="theme-label">🌅 Sunset</span>
+    </div>
+    <div class="theme-dot" data-t="mono" style="background: linear-gradient(135deg,#f5f5f5,#000000)">
+        <span class="theme-label">⬛ Mono</span>
+    </div>
+    <div class="theme-dot" data-t="lavender" style="background: linear-gradient(135deg,#f5f0ff,#7c3aed)">
+        <span class="theme-label">💜 Lavender</span>
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav class="fixed w-full z-50 top-4 px-4 flex justify-center">
+    <div class="nav-glass px-6 py-3 rounded-full flex items-center gap-6 md:gap-8">
+        <a href="#" class="font-bold text-lg tracking-tight" style="font-family:'Poppins',sans-serif; color:var(--text)">
+            LUVI.A.<span style="color:var(--accent)">_</span>
+        </a>
+        <div class="hidden md:flex items-center gap-6">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#skills" class="nav-link">Skills</a>
+        </div>
+        <div class="flex items-center gap-3">
+            <!-- Mobile Theme Toggle -->
+            <button id="mobile-theme-btn" class="md:hidden w-9 h-9 flex items-center justify-center rounded-full" style="background:var(--tag-bg); border:var(--border-style)">
+                <i data-lucide="palette" class="w-4 h-4" style="color:var(--text)"></i>
+            </button>
+            <!-- Desktop Cycle Theme -->
+            <button id="theme-cycle-btn" class="hidden md:flex w-9 h-9 items-center justify-center rounded-full" style="background:var(--tag-bg); border:var(--border-style)" title="Cycle themes">
+                <i data-lucide="palette" class="w-4 h-4" style="color:var(--accent)"></i>
+            </button>
+            <a href="#contact" class="btn-primary text-sm py-2 px-5">Say Hi 👋</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Theme Drawer -->
+<div id="mobile-theme-drawer" class="fixed bottom-0 left-0 right-0 z-50 p-4 translate-y-full transition-transform duration-300 md:hidden" style="background:var(--card); border-top:var(--border-style)">
+    <p class="text-xs font-bold mb-3 uppercase tracking-wider" style="color:var(--subtext)">Choose Theme</p>
+    <div class="flex flex-wrap gap-3">
+        <button class="mobile-theme-dot flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold" data-t="light" style="background:var(--tag-bg); border:var(--border-style); color:var(--text)">☀️ Light</button>
+        <button class="mobile-theme-dot flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold" data-t="comic" style="background:var(--tag-bg); border:var(--border-style); color:var(--text)">🎨 Comic</button>
+        <button class="mobile-theme-dot flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold" data-t="forest" style="background:var(--tag-bg); border:var(--border-style); color:var(--text)">🌿 Forest</button>
+        <button class="mobile-theme-dot flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold" data-t="ocean" style="background:var(--tag-bg); border:var(--border-style); color:var(--text)">🌊 Ocean</button>
+        <button class="mobile-theme-dot flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold" data-t="sunset" style="background:var(--tag-bg); border:var(--border-style); color:var(--text)">🌅 Sunset</button>
+        <button class="mobile-theme-dot flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold" data-t="mono" style="background:var(--tag-bg); border:var(--border-style); color:var(--text)">⬛ Mono</button>
+        <button class="mobile-theme-dot flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-bold" data-t="lavender" style="background:var(--tag-bg); border:var(--border-style); color:var(--text)">💜 Lavender</button>
+    </div>
+    <button id="close-drawer" class="mt-3 w-full py-2 rounded-xl text-sm font-bold" style="background:var(--tag-bg); border:var(--border-style); color:var(--subtext)">Close</button>
+</div>
+
+<!-- Main Content -->
+<main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
+
+    <!-- HERO -->
+    <section class="relative min-h-[70vh] flex flex-col items-center justify-center text-center mb-24">
+        <!-- Decorative blobs -->
+        <div class="absolute top-1/4 left-1/5 w-48 h-48 rounded-full blur-3xl opacity-20 hidden md:block" style="background:var(--accent)"></div>
+        <div class="absolute bottom-1/4 right-1/5 w-32 h-32 rounded-full blur-2xl opacity-15 hidden md:block" style="background:var(--accent2)"></div>
+        
+        <!-- Floating doodle star -->
+        <div class="absolute top-12 left-[8%] w-14 h-14 opacity-50 float-slow hidden md:block">
+            <svg viewBox="0 0 100 100" fill="none"><path d="M50 10 Q60 40 90 50 Q60 60 50 90 Q40 60 10 50 Q40 40 50 10" stroke-width="6" stroke-linecap="round" stroke="var(--accent)"/></svg>
+        </div>
+        <div class="absolute bottom-20 right-[12%] w-16 h-16 opacity-30 spin-slow hidden md:block">
+            <svg viewBox="0 0 100 100" fill="none"><path d="M50 10 C60 10,60 40,90 50 C60 60,60 90,50 90 C40 90,40 60,10 50 C40 40,40 10,50 10 Z" stroke-width="5" stroke-dasharray="10 10" stroke="var(--accent2)"/></svg>
+        </div>
+
+        <div class="reveal relative z-10">
+            <div class="status-badge mb-8">
+                <div class="status-dot"></div>
+                <span class="text-xs font-semibold uppercase tracking-wider" style="color:var(--subtext)">Open to work</span>
+            </div>
+
+            <h1 class="hero-name text-7xl md:text-9xl mb-4">LUFIKA AYU FATIMAH</h1>
+
+            <!-- Floating zap icon -->
+            <div class="absolute left-1/2 -translate-x-1/2" style="top:-60px">
+                <div class="w-12 h-12 rounded-2xl float-med flex items-center justify-center" style="background:var(--card); border:var(--border-style); box-shadow:var(--card-shadow)">
+                    <i data-lucide="zap" class="w-6 h-6" style="color:var(--accent)"></i>
+                </div>
+            </div>
+
+            <div class="hero-role-card mt-4 mb-6">
+                <p class="text-base md:text-lg font-medium" style="color:var(--text)">
+                    Junior UI/UX Designer <span style="color:var(--accent)" class="mx-2">✦</span> Front-End Developer
+                    <br>
+                    <span style="color:var(--subtext)">| Aspiring AI Engineer</span>
+                </p>
+            </div>
+
+            <p class="text-lg md:text-xl max-w-xl mx-auto leading-relaxed" style="color:var(--subtext)">
+                "Building clean interfaces and <strong style="color:var(--text); font-weight:700">intelligent systems</strong>."
+            </p>
+        </div>
+    </section>
+
+    <!-- HANGING PHOTOS -->
+    <section class="py-16 mb-20 relative reveal" style="background:color-mix(in srgb, var(--card) 50%, transparent); border:var(--border-style); border-radius:3rem; box-shadow: 0 8px 40px var(--shadow-color)">
+        <div class="text-center mb-12">
+            <h2 class="section-title text-3xl mb-2">Moments in Motion</h2>
+            <p class="text-sm" style="color:var(--subtext)">The playful side of my digital workspace.</p>
+        </div>
+        <div class="flex flex-col md:flex-row justify-center items-start gap-8 md:gap-16 lg:gap-24 min-h-[380px] px-8">
+            
+            <div class="relative flex flex-col items-center float-slow mx-auto md:mx-0 w-full md:w-auto mt-8 md:mt-0 reveal">
+                <div class="pin-dot"></div>
+                <div class="swing-1 flex flex-col items-center pt-1">
+                    <div class="hanging-wire h-12"></div>
+                    <div class="photo-card -rotate-3" style="border-radius:1.25rem">
+                        <div class="w-48 h-64 rounded-xl overflow-hidden relative group" style="background:var(--tag-bg)">
+                            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80" alt="Workspace" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute bottom-3 left-3 right-3 p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity text-center" style="background:color-mix(in srgb, var(--card) 95%, transparent); border:var(--border-style)">
+                                <span class="text-xs font-bold" style="color:var(--text)">Coding Space</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative flex flex-col items-center float-med mx-auto md:mx-0 w-full md:w-auto mt-16 md:mt-12 reveal">
+                <div class="pin-dot"></div>
+                <div class="swing-2 flex flex-col items-center pt-1">
+                    <div class="hanging-wire h-20"></div>
+                    <div class="photo-card rotate-2 relative" style="border-radius:1.25rem">
+                        <div class="absolute -right-5 -top-5 w-10 h-10 rounded-full flex items-center justify-center z-20 rotate-12" style="background:var(--accent); border:var(--border-style)">
+                            <i data-lucide="plus" class="w-4 h-4" style="color:var(--card)"></i>
+                        </div>
+                        <div class="w-56 h-72 rounded-xl overflow-hidden relative group" style="background:var(--tag-bg)">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=400&q=80" alt="Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute bottom-3 left-3 right-3 p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity text-center" style="background:color-mix(in srgb, var(--card) 95%, transparent); border:var(--border-style)">
+                                <span class="text-xs font-bold" style="color:var(--text)">Design Systems</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative flex flex-col items-center float-fast mx-auto md:mx-0 w-full md:w-auto mt-8 md:mt-4 reveal">
+                <div class="pin-dot"></div>
+                <div class="swing-3 flex flex-col items-center pt-1">
+                    <div class="hanging-wire h-10"></div>
+                    <div class="photo-card -rotate-1 relative" style="border-radius:1.25rem">
+                        <div class="absolute -left-7 top-1/2 px-2 py-2 rounded-xl z-20 -rotate-6" style="background:var(--accent2); border:var(--border-style)">
+                            <i data-lucide="terminal" class="w-4 h-4" style="color:var(--card)"></i>
+                        </div>
+                        <div class="w-48 h-56 rounded-xl overflow-hidden relative group" style="background:var(--tag-bg)">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=400&q=80" alt="Code" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute bottom-3 left-3 right-3 p-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity text-center" style="background:color-mix(in srgb, var(--card) 95%, transparent); border:var(--border-style)">
+                                <span class="text-xs font-bold" style="color:var(--text)">Logic Setup</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE HIGHLIGHTS -->
+    <section class="mb-20 reveal">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="eye" class="w-5 h-5"></i></div>
+                <h4 class="section-title text-sm">User-Centered</h4>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="layout" class="w-5 h-5"></i></div>
+                <h4 class="section-title text-sm">Clean UI Systems</h4>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
+                <h4 class="section-title text-sm">Responsive Dev</h4>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="puzzle" class="w-5 h-5"></i></div>
+                <h4 class="section-title text-sm">Problem Solving</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT & SKILLS GRID -->
+    <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16" id="about">
+        
+        <!-- About Card -->
+        <div class="t-card-shadow t-radius reveal" style="background:var(--card); border:var(--border-style); padding:2.5rem">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-7" style="background:color-mix(in srgb, var(--accent) 12%, transparent); border:var(--border-style); color:var(--accent)">
+                <i data-lucide="user" class="w-7 h-7"></i>
+            </div>
+            <h3 class="section-title text-3xl mb-5">About Me</h3>
+            <div class="space-y-4 text-sm leading-relaxed" style="color:var(--subtext)">
+                <p>I am a Junior UI/UX Designer and Front-End Developer with a strong passion for turning complex ideas into clean, functional, and deeply playful interfaces.</p>
+                <p>My core focus lies in ensuring usability and flawless responsive design without sacrificing aesthetics. Recently, I've expanded my mindset towards 
+                    <span class="font-bold px-1 rounded" style="color:var(--accent); background:color-mix(in srgb,var(--accent) 10%, transparent)">problem solving and AI systems</span>, 
+                    learning how intelligent logic can run seamlessly beneath beautifully crafted frontend wrappers.
+                </p>
+            </div>
+        </div>
+
+        <!-- Skills Card -->
+        <div class="t-card-shadow t-radius reveal" id="skills" style="background:var(--card); border:var(--border-style); padding:2.5rem">
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center mb-7" style="background:color-mix(in srgb, var(--accent2) 15%, transparent); border:var(--border-style); color:var(--accent2)">
+                <i data-lucide="layers" class="w-7 h-7"></i>
+            </div>
+            <h3 class="section-title text-3xl mb-5">Skill Arsenal</h3>
+            <div class="space-y-5">
+                <div>
+                    <div class="skill-category-label">Design & UI</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">Figma</span>
+                        <span class="tag-pill">Canva</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="skill-category-label" style="border-color:var(--accent2); color:var(--accent2)">Frontend Dev</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">HTML/CSS</span>
+                        <span class="tag-pill">JavaScript</span>
+                        <span class="tag-pill">React.js</span>
+                        <span class="tag-pill">Next.js</span>
+                    </div>
+                </div>
+                <div>
+                    <div class="skill-category-label" style="border-color:var(--subtext); color:var(--subtext)">Backend & Logic</div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tag-pill">Node.js</span>
+                        <span class="tag-pill">MongoDB</span>
+                        <span class="tag-pill">Supabase</span>
+                        <span class="tag-pill">Python</span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-7 pt-5" style="border-top:var(--border-style)">
+                <p class="text-xs font-bold uppercase tracking-wider flex items-center gap-2 mb-3" style="color:var(--subtext)">
+                    <i data-lucide="sparkles" class="w-4 h-4" style="color:var(--accent)"></i> Currently Learning
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-xl text-xs font-bold" style="background:color-mix(in srgb,var(--accent) 12%,transparent); color:var(--accent); border:var(--border-style)">Advanced React Patterns</span>
+                    <span class="px-3 py-1 rounded-xl text-xs font-bold" style="background:color-mix(in srgb,var(--accent2) 12%,transparent); color:var(--accent2); border:var(--border-style)">API Integration</span>
+                    <span class="px-3 py-1 rounded-xl text-xs font-bold" style="background:color-mix(in srgb,var(--subtext) 12%,transparent); color:var(--subtext); border:var(--border-style)">Basic AI Systems</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section class="mb-28 reveal">
+        <h3 class="section-title text-3xl mb-8 text-center">How I Work</h3>
+        <div class="t-card-shadow t-radius flex flex-col md:flex-row items-center gap-2 p-6 md:p-8" style="background:var(--card); border:var(--border-style)">
+            <div class="process-step">
+                <div class="process-icon"><i data-lucide="search" class="w-5 h-5"></i></div>
+                <h5 class="font-bold text-sm" style="color:var(--text)">1. Research</h5>
+            </div>
+            <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 shrink-0" style="color:var(--border)"></i>
+            <div class="process-step">
+                <div class="process-icon"><i data-lucide="edit-3" class="w-5 h-5"></i></div>
+                <h5 class="font-bold text-sm" style="color:var(--text)">2. Wireframe</h5>
+            </div>
+            <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 shrink-0" style="color:var(--border)"></i>
+            <div class="process-step">
+                <div class="process-icon"><i data-lucide="pen-tool" class="w-5 h-5"></i></div>
+                <h5 class="font-bold text-sm" style="color:var(--text)">3. Design</h5>
+            </div>
+            <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 shrink-0" style="color:var(--border)"></i>
+            <div class="process-step">
+                <div class="process-icon"><i data-lucide="code" class="w-5 h-5"></i></div>
+                <h5 class="font-bold text-sm" style="color:var(--text)">4. Development</h5>
+            </div>
+            <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 shrink-0" style="color:var(--border)"></i>
+            <div class="process-step">
+                <div class="process-icon"><i data-lucide="check-circle" class="w-5 h-5"></i></div>
+                <h5 class="font-bold text-sm" style="color:var(--text)">5. Testing</h5>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROJECT -->
+    <section class="mb-14 reveal" id="projects">
+        <h2 class="section-title text-4xl mb-10 text-center">Selected Works</h2>
+        <div class="t-card-shadow t-radius flex flex-col lg:flex-row gap-10 items-center p-6 md:p-10" style="background:var(--card); border:var(--border-style)">
+            <!-- Visual -->
+            <div class="w-full lg:w-1/2 aspect-[4/3] rounded-3xl overflow-hidden relative group" style="background:var(--tag-bg); border:var(--border-style)">
+                <div class="absolute inset-0 flex items-center justify-center" style="color:var(--accent)">
+                    <i data-lucide="brain-circuit" class="w-24 h-24 transition-transform duration-700 group-hover:scale-110"></i>
+                </div>
+            </div>
+            <!-- Content -->
+            <div class="w-full lg:w-1/2 flex flex-col justify-center">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-4 w-fit" style="background:color-mix(in srgb,var(--accent) 12%,transparent); color:var(--accent); border:var(--border-style)">
+                    <i data-lucide="star" class="w-3 h-3 fill-current"></i> Featured
+                </div>
+                <h3 class="section-title text-4xl md:text-5xl mb-4">AI Decision Web App</h3>
+                <div class="flex gap-2 mb-4 flex-wrap">
+                    <span class="metric-badge"><i data-lucide="trending-down" class="w-3 h-3"></i> Reduced time 40%</span>
+                    <span class="metric-badge metric-badge-blue"><i data-lucide="zap" class="w-3 h-3"></i> Faster interaction</span>
+                </div>
+                <p class="text-sm leading-relaxed mb-4" style="color:var(--subtext)">A web-based application that helps users make decisions using logic-based scoring and simple AI systems. It bridges complex backend logic with an ultra-clean frontend experience.</p>
+                <p class="quote-block">"I learned how to seamlessly integrate Python backend logic with a dynamic React frontend to solve real user problems."</p>
+                <div class="flex flex-wrap gap-2 p-4 rounded-2xl mb-7" style="background:var(--tag-bg); border:var(--border-style)">
+                    <span class="tag-pill text-xs">JavaScript</span>
+                    <span class="tag-pill text-xs">Python API</span>
+                    <span class="tag-pill text-xs">React.js</span>
+                </div>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#" class="btn-primary text-sm"><i data-lucide="external-link" class="w-4 h-4"></i> Live Demo</a>
+                    <a href="#" class="btn-secondary text-sm"><i data-lucide="github" class="w-4 h-4"></i> GitHub Repo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MORE PROJECTS GRID -->
+    <section class="mb-28">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            
+            <div class="project-card reveal">
+                <div class="project-thumb"><i data-lucide="layout" class="w-12 h-12 transition-transform duration-500 group-hover:scale-125"></i></div>
+                <div class="flex-grow">
+                    <h4 class="section-title text-xl mb-1">Portfolio Website</h4>
+                    <p class="text-sm font-bold mb-3" style="color:var(--accent)">Design + Frontend</p>
+                    <div class="mb-3"><span class="metric-badge">Improved UI clarity</span></div>
+                    <p class="text-sm mb-3 leading-relaxed" style="color:var(--subtext)">A modern portfolio with striking aesthetics, unique animations, and responsive layout to showcase work elegantly.</p>
+                    <p class="quote-block">"Mastered TailwindCSS layout structuring and custom dual-theme styling."</p>
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="tag-pill text-xs">HTML/Tailwind</span>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-auto pt-4" style="border-top:var(--border-style)">
+                    <a href="#" class="flex-1 text-center py-2 rounded-xl text-xs font-bold" style="background:var(--text); color:var(--card)">Live Demo</a>
+                    <a href="#" class="flex-1 text-center py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1" style="background:var(--tag-bg); color:var(--text); border:var(--border-style)"><i data-lucide="github" class="w-3 h-3"></i> Code</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal" style="transition-delay:100ms">
+                <div class="project-thumb"><i data-lucide="bar-chart-3" class="w-12 h-12 transition-transform duration-500 group-hover:scale-125"></i></div>
+                <div class="flex-grow">
+                    <h4 class="section-title text-xl mb-1">Dashboard UI</h4>
+                    <p class="text-sm font-bold mb-3" style="color:var(--accent)">UI/UX + React</p>
+                    <div class="mb-3"><span class="metric-badge">Data processing simplified</span></div>
+                    <p class="text-sm mb-3 leading-relaxed" style="color:var(--subtext)">A clean and interactive dashboard interface meticulously designed for clear data visualization.</p>
+                    <p class="quote-block">"Improved understanding of component reusability and state management in React."</p>
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="tag-pill text-xs">Figma</span>
+                        <span class="tag-pill text-xs">React</span>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-auto pt-4" style="border-top:var(--border-style)">
+                    <a href="#" class="flex-1 text-center py-2 rounded-xl text-xs font-bold" style="background:var(--text); color:var(--card)">Live Demo</a>
+                    <a href="#" class="flex-1 text-center py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1" style="background:var(--tag-bg); color:var(--text); border:var(--border-style)"><i data-lucide="github" class="w-3 h-3"></i> Code</a>
+                </div>
+            </div>
+
+            <div class="project-card reveal" style="transition-delay:200ms">
+                <div class="project-thumb"><i data-lucide="mouse-pointer-click" class="w-12 h-12 transition-transform duration-500 group-hover:scale-125"></i></div>
+                <div class="flex-grow">
+                    <h4 class="section-title text-xl mb-1">Landing Page</h4>
+                    <p class="text-sm font-bold mb-3" style="color:var(--accent)">UI Designer</p>
+                    <div class="mb-3"><span class="metric-badge">+25% conversion rate</span></div>
+                    <p class="text-sm mb-3 leading-relaxed" style="color:var(--subtext)">A high-conversion landing page with modern UI elements and flawless responsive design across devices.</p>
+                    <p class="quote-block">"Deepened knowledge in visual hierarchy and call-to-action placement."</p>
+                    <div class="flex flex-wrap gap-2 mb-5">
+                        <span class="tag-pill text-xs">Figma</span>
+                        <span class="tag-pill text-xs">HTML/CSS</span>
+                    </div>
+                </div>
+                <div class="flex gap-2 mt-auto pt-4" style="border-top:var(--border-style)">
+                    <a href="#" class="flex-1 text-center py-2 rounded-xl text-xs font-bold" style="background:var(--text); color:var(--card)">Live Demo</a>
+                    <a href="#" class="flex-1 text-center py-2 rounded-xl text-xs font-bold flex items-center justify-center gap-1" style="background:var(--tag-bg); color:var(--text); border:var(--border-style)"><i data-lucide="github" class="w-3 h-3"></i> Code</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASE STUDY -->
+    <section class="mb-28 reveal">
+        <div class="t-card-shadow t-radius p-8 md:p-12" style="background:var(--card); border:var(--border-style)">
+            <div class="flex items-center gap-3 mb-8 pb-6" style="border-bottom:var(--border-style)">
+                <div class="w-14 h-14 rounded-2xl flex items-center justify-center -rotate-6" style="background:color-mix(in srgb,var(--accent2) 15%,transparent); border:var(--border-style); color:var(--accent2)">
+                    <i data-lucide="microscope" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <h3 class="section-title text-2xl">Case Study Highlight</h3>
+                    <p class="text-sm mt-0.5" style="color:var(--accent)">AI Decision Web App Structure</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+                <div class="case-item">
+                    <h5 class="font-bold text-sm flex items-center gap-2 mb-2" style="color:var(--text)"><i data-lucide="alert-circle" class="w-4 h-4" style="color:var(--accent)"></i> Problem</h5>
+                    <p class="text-sm leading-relaxed" style="color:var(--subtext)">Users struggled to make objective decisions when faced with multiple variables, leading to decision fatigue.</p>
+                </div>
+                <div class="case-item">
+                    <h5 class="font-bold text-sm flex items-center gap-2 mb-2" style="color:var(--text)"><i data-lucide="settings" class="w-4 h-4" style="color:var(--accent2)"></i> Process</h5>
+                    <p class="text-sm leading-relaxed" style="color:var(--subtext)">Mapped out logical flow, created wireframes prioritizing input clarity, and built a Python logic handler.</p>
+                </div>
+                <div class="case-item">
+                    <h5 class="font-bold text-sm flex items-center gap-2 mb-2" style="color:var(--text)"><i data-lucide="lightbulb" class="w-4 h-4" style="color:var(--accent)"></i> Solution</h5>
+                    <p class="text-sm leading-relaxed" style="color:var(--subtext)">Developed a clean React interface that feeds parameters into an AI scoring system to output ranked choices.</p>
+                </div>
+                <div class="case-item">
+                    <h5 class="font-bold text-sm flex items-center gap-2 mb-2" style="color:var(--text)"><i data-lucide="award" class="w-4 h-4" style="color:#22c55e"></i> Result</h5>
+                    <p class="text-sm leading-relaxed" style="color:var(--subtext)">Reduced decision time by 40% and improved user confidence through transparent, logic-based scoring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="mb-28 reveal">
+        <h3 class="section-title text-3xl mb-10 text-center">Word on the Street</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-7">
+            <div class="testimonial-card">
+                <p class="font-medium italic leading-relaxed mb-6 text-base" style="color:var(--text)">"Strong attention to detail and great problem-solving skills. LIUHAN bridges the gap between how a site looks and how intelligently it functions."</p>
+                <div class="flex items-center gap-4 pt-5" style="border-top:var(--border-style)">
+                    <div class="w-11 h-11 rounded-full overflow-hidden" style="border:var(--border-style)">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=100&q=80" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h5 class="font-bold text-sm" style="color:var(--text)">David M.</h5>
+                        <p class="text-xs" style="color:var(--accent)">Product Manager</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="font-medium italic leading-relaxed mb-6 text-base" style="color:var(--text)">"The UI improvements were exactly what we needed. Clean, responsive, and thoroughly tested. Highly recommend for modern web projects."</p>
+                <div class="flex items-center gap-4 pt-5" style="border-top:var(--border-style)">
+                    <div class="w-11 h-11 rounded-full overflow-hidden" style="border:var(--border-style)">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?fit=crop&w=100&q=80" alt="" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h5 class="font-bold text-sm" style="color:var(--text)">Sarah T.</h5>
+                        <p class="text-xs" style="color:var(--accent2)">Creative Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="reveal">
+        <div class="t-card-shadow t-radius p-10 md:p-16 text-center relative overflow-hidden" style="background:var(--card); border:var(--border-style)">
+            <!-- bg doodle -->
+            <div class="absolute -right-8 -bottom-8 w-36 h-36 opacity-10 rotate-12 pointer-events-none" style="color:var(--accent)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            </div>
+            <div class="relative z-10 max-w-2xl mx-auto">
+                <h2 class="section-title text-4xl md:text-5xl mb-5">Interested in working together?</h2>
+                <p class="text-base leading-relaxed mb-10" style="color:var(--subtext)">Let's combine striking aesthetics with solid engineering to build something memorable.</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                    <a href="#" class="btn-primary w-full sm:w-auto justify-center text-sm"><i data-lucide="download" class="w-5 h-5"></i> Download CV</a>
+                    <a href="mailto:hello@example.com" class="btn-secondary w-full sm:w-auto justify-center text-sm"><i data-lucide="mail" class="w-5 h-5"></i> Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="py-10 text-center text-sm font-medium" style="color:var(--subtext); border-top:var(--border-style); background:var(--card)">
+    <p>© 2026 LIUHAN. Designed & Developed with <i data-lucide="heart" class="w-4 h-4 inline mb-1" style="color:var(--accent); fill:var(--accent)"></i></p>
+</footer>
+
+<script>
+    lucide.createIcons();
+
+    // ============================================
+    // THEME SYSTEM
+    // ============================================
+    const THEMES = ['light','comic','forest','ocean','sunset','mono','lavender'];
+    let currentThemeIndex = 0;
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+
+        // Handle halftone for comic
+        if (theme === 'comic') {
+            document.body.style.backgroundImage = 'radial-gradient(#334155 2px, transparent 2px)';
+            document.body.style.backgroundSize = '24px 24px';
+        } else {
+            document.body.style.backgroundImage = 'none';
+            document.body.style.backgroundSize = '';
+        }
+
+        // Update active dot
+        document.querySelectorAll('.theme-dot').forEach(d => {
+            d.classList.toggle('active', d.dataset.t === theme);
+        });
+
+        // Update cycle index
+        currentThemeIndex = THEMES.indexOf(theme);
+        localStorage.setItem('portfolio-theme', theme);
+
+        // Re-init icons after slight delay (color updates)
+        setTimeout(() => lucide.createIcons(), 50);
+    }
+
+    // Load saved theme
+    const savedTheme = localStorage.getItem('portfolio-theme') || 'light';
+    applyTheme(savedTheme);
+
+    // Desktop dot clicks
+    document.querySelectorAll('.theme-dot').forEach(dot => {
+        dot.addEventListener('click', () => applyTheme(dot.dataset.t));
+    });
+
+    // Mobile dot clicks
+    document.querySelectorAll('.mobile-theme-dot').forEach(dot => {
+        dot.addEventListener('click', () => {
+            applyTheme(dot.dataset.t);
+            closeDrawer();
+        });
+    });
+
+    // Cycle button (desktop nav)
+    document.getElementById('theme-cycle-btn').addEventListener('click', () => {
+        currentThemeIndex = (currentThemeIndex + 1) % THEMES.length;
+        applyTheme(THEMES[currentThemeIndex]);
+    });
+
+    // Mobile drawer
+    const drawer = document.getElementById('mobile-theme-drawer');
+    function openDrawer()  { drawer.classList.remove('translate-y-full'); }
+    function closeDrawer() { drawer.classList.add('translate-y-full'); }
+
+    document.getElementById('mobile-theme-btn').addEventListener('click', openDrawer);
+    document.getElementById('close-drawer').addEventListener('click', closeDrawer);
+
+    // ============================================
+    // SCROLL REVEAL
+    // ============================================
+    const revealObs = new IntersectionObserver((entries, obs) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('active');
+                obs.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // ============================================
+    // CURSOR GLOW
+    // ============================================
+    if (window.matchMedia('(pointer:fine)').matches) {
+        const glow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', e => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top  = e.clientY + 'px';
+        });
+    }
+</script>
+</body>
+</html>

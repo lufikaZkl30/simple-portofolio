@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Editorial Developer</title>
+    <!-- design AESTETIK -->
+
+    <!-- Google Fonts for Vintage Editorial Aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&family=Courier+Prime&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        body: ['Lora', 'serif'],
+                        mono: ['Courier Prime', 'monospace'],
+                    },
+                    colors: {
+                        vintage: {
+                            paper: '#f2eee3',
+                            ink: '#1c1b18',
+                            lightInk: '#3a3832',
+                            accent: '#8c2b2b', // Faded heritage red
+                            secondary: '#6b6054'
+                        }
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E\")",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body {
+            background-color: #f2eee3;
+        }
+        
+        /* Typography specific styling */
+        .drop-cap::first-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 0.15em;
+            margin-top: 0.05em;
+            color: #1c1b18;
+        }
+
+        /* Vintage borders and ornaments */
+        .border-double-thick {
+            border-style: double;
+            border-width: 6px;
+        }
+        
+        .ornament-line {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #6b6054;
+        }
+        .ornament-line::before,
+        .ornament-line::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #1c1b18;
+        }
+        .ornament-line:not(:empty)::before {
+            margin-right: 1em;
+        }
+        .ornament-line:not(:empty)::after {
+            margin-left: 1em;
+        }
+
+        /* Stamp effect */
+        .vintage-stamp {
+            position: absolute;
+            border: 2px dashed #8c2b2b;
+            color: #8c2b2b;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Courier Prime', monospace;
+            text-transform: uppercase;
+            font-weight: bold;
+            opacity: 0.8;
+            transform: rotate(-15deg);
+        }
+
+        ::selection {
+            background-color: #1c1b18;
+            color: #f2eee3;
+        }
+    </style>
+</head>
+<body class="text-vintage-ink font-body bg-vintage-paper bg-paper-texture min-h-screen relative overflow-x-hidden selection:bg-vintage-ink selection:text-vintage-paper">
+
+    <!-- Top Navigation Bar (Editorial Style) -->
+    <nav class="w-full border-b border-vintage-ink py-3 px-4 md:px-8 flex justify-between items-center text-sm font-serif uppercase tracking-widest relative z-10 bg-vintage-paper/90 backdrop-blur-sm">
+        <div class="flex items-center gap-6">
+            <a href="#" class="font-bold flex items-center gap-2 hover:text-vintage-accent transition-colors">
+                <i data-lucide="compass" class="w-4 h-4"></i>
+                <span class="hidden sm:inline">Directory</span>
+            </a>
+            <div class="hidden md:flex gap-4 text-vintage-lightInk">
+                <a href="#story" class="hover:text-vintage-ink transition-colors">About</a>
+                <a href="#skills" class="hover:text-vintage-ink transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-vintage-ink transition-colors">Projects</a>
+                <a href="#experience" class="hover:text-vintage-ink transition-colors">Experience</a>
+            </div>
+        </div>
+        <div class="font-mono text-xs text-vintage-secondary">
+            Vol. I — Est. 2023
+        </div>
+        <div>
+            <a href="#contact" class="flex items-center gap-2 hover:text-vintage-accent transition-colors">
+                <i data-lucide="mail" class="w-4 h-4"></i>
+                <span class="hidden sm:inline">Contact</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Hero Section -->
+        <header class="text-center pt-8 pb-16 relative">
+            <!-- Decorative Stamp -->
+            <div class="vintage-stamp w-32 h-32 text-xs p-2 top-0 right-4 hidden md:flex animate-[spin_60s_linear_infinite]">
+                <div class="absolute inset-2 border border-vintage-accent rounded-full"></div>
+                APPROVED FOR<br>DEVELOPMENT
+            </div>
+
+            <p class="font-mono text-sm uppercase tracking-[0.3em] text-vintage-secondary mb-4">Since 2023</p>
+            
+            <h1 class="font-serif text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-6 uppercase text-vintage-ink">
+                LIUHAN
+            </h1>
+            
+            <div class="border-y border-vintage-ink py-4 mb-8 mx-auto max-w-3xl">
+                <h2 class="font-serif text-2xl md:text-3xl italic text-vintage-lightInk">
+                    "I design intuitive interfaces and build intelligent web experiences."
+                </h2>
+            </div>
+            
+            <p class="font-mono text-sm tracking-widest uppercase mb-10">
+                Junior UI/UX Designer <span class="mx-2 text-vintage-accent">|</span> Front-End Developer <span class="mx-2 text-vintage-accent">|</span> AI Enthusiast
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                <a href="#projects" class="px-8 py-3 bg-vintage-ink text-vintage-paper font-mono font-bold uppercase tracking-widest text-sm hover:bg-vintage-lightInk transition-colors w-full sm:w-auto shadow-[4px_4px_0_#8c2b2b]">
+                    View Projects
+                </a>
+                <a href="#" class="px-8 py-3 border-2 border-vintage-ink font-mono font-bold uppercase tracking-widest text-sm hover:bg-vintage-ink hover:text-vintage-paper transition-colors w-full sm:w-auto">
+                    Download CV
+                </a>
+            </div>
+        </header>
+
+        <!-- About Section -->
+        <section id="story" class="py-12 border-t-4 border-b-2 border-vintage-ink border-double">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Text Collage -->
+                <div class="pr-0 md:pr-8">
+                    <h3 class="font-serif text-3xl font-bold mb-6">About the Developer</h3>
+                    <p class="drop-cap text-lg leading-relaxed text-vintage-lightInk mb-4">
+                        I’m a Junior UI/UX Designer and Front-End Developer who enjoys turning ideas into clean, functional interfaces. I focus heavily on usability, responsive design, and uncompromised performance.
+                    </p>
+                    <p class="text-lg leading-relaxed text-vintage-lightInk">
+                        Currently, I’m actively exploring AI-driven systems and logical frameworks to build smarter, more adaptive web experiences for the future.
+                    </p>
+                </div>
+                
+                <!-- Visual Collage -->
+                <div class="relative h-96 w-full flex items-center justify-center border border-vintage-ink bg-white/20 p-4">
+                    <!-- Photo Frame simulation -->
+                    <div class="absolute inset-4 border-2 border-vintage-ink border-double bg-vintage-paper bg-paper-texture flex flex-col items-center justify-center p-8 text-center overflow-hidden group">
+                        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]"></div>
+                        <i data-lucide="cpu" class="w-24 h-24 text-vintage-ink mb-6 group-hover:scale-110 transition-transform duration-700"></i>
+                        <h4 class="font-serif text-2xl font-bold uppercase mb-2">The Blueprint</h4>
+                        <p class="font-mono text-xs">Fig. 1 — The intersection of design and logic.</p>
+                        <!-- Red accent element -->
+                        <div class="absolute top-4 left-4 w-4 h-4 bg-vintage-accent rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DNA Section -->
+        <section id="dna" class="py-16">
+            <div class="ornament-line mb-12">
+                <span class="font-serif text-2xl px-4 uppercase tracking-widest font-bold text-vintage-ink">My Development DNA</span>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-6 text-center max-w-4xl mx-auto">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 border border-vintage-ink rounded-full flex items-center justify-center mb-4 bg-white/30">
+                        <i data-lucide="eye" class="w-8 h-8 text-vintage-ink"></i>
+                    </div>
+                    <h5 class="font-serif font-bold uppercase text-sm mb-1">UI/UX Thinking</h5>
+                    <p class="text-xs font-mono text-vintage-secondary">Desain berbasis user</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 border border-vintage-ink rounded-full flex items-center justify-center mb-4 bg-white/30">
+                        <i data-lucide="code" class="w-8 h-8 text-vintage-ink"></i>
+                    </div>
+                    <h5 class="font-serif font-bold uppercase text-sm mb-1">Clean Code</h5>
+                    <p class="text-xs font-mono text-vintage-secondary">Rapi, maintainable</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 border border-vintage-ink rounded-full flex items-center justify-center mb-4 bg-white/30">
+                        <i data-lucide="puzzle" class="w-8 h-8 text-vintage-ink"></i>
+                    </div>
+                    <h5 class="font-serif font-bold uppercase text-sm mb-1">Problem Solving</h5>
+                    <p class="text-xs font-mono text-vintage-secondary">Logika & analisis</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 border border-vintage-ink rounded-full flex items-center justify-center mb-4 bg-white/30">
+                        <i data-lucide="smartphone" class="w-8 h-8 text-vintage-ink"></i>
+                    </div>
+                    <h5 class="font-serif font-bold uppercase text-sm mb-1">Responsive Design</h5>
+                    <p class="text-xs font-mono text-vintage-secondary">Semua device</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 border border-vintage-ink rounded-full flex items-center justify-center mb-4 bg-vintage-accent text-vintage-paper shadow-[4px_4px_0_#1c1b18]">
+                        <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+                    </div>
+                    <h5 class="font-serif font-bold uppercase text-sm text-vintage-accent mb-1">AI Mindset</h5>
+                    <p class="text-xs font-mono text-vintage-secondary">Mulai ke sistem cerdas</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 border border-vintage-ink rounded-full flex items-center justify-center mb-4 bg-white/30">
+                        <i data-lucide="users" class="w-8 h-8 text-vintage-ink"></i>
+                    </div>
+                    <h5 class="font-serif font-bold uppercase text-sm mb-1">Team Collaboration</h5>
+                    <p class="text-xs font-mono text-vintage-secondary">Kerja tim efektif</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-12 border-t border-vintage-ink">
+            <h3 class="font-mono text-center uppercase tracking-[0.2em] mb-12 text-vintage-secondary">Technical Proficiencies</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Design -->
+                <div class="border border-vintage-ink p-6 bg-white/10">
+                    <h4 class="font-serif text-xl font-bold uppercase border-b border-vintage-ink pb-2 mb-4 flex items-center gap-2">
+                        <i data-lucide="pen-tool" class="w-5 h-5"></i> Design
+                    </h4>
+                    <ul class="font-mono text-sm space-y-2 text-vintage-lightInk">
+                        <li>— Figma</li>
+                        <li>— Canva</li>
+                        <li>— Wireframing</li>
+                        <li>— Prototyping</li>
+                        <li>— Design System</li>
+                    </ul>
+                </div>
+
+                <!-- Frontend -->
+                <div class="border border-vintage-ink p-6 bg-white/10">
+                    <h4 class="font-serif text-xl font-bold uppercase border-b border-vintage-ink pb-2 mb-4 flex items-center gap-2">
+                        <i data-lucide="layout" class="w-5 h-5"></i> Frontend
+                    </h4>
+                    <ul class="font-mono text-sm space-y-2 text-vintage-lightInk">
+                        <li>— HTML, CSS, JavaScript</li>
+                        <li>— React.js</li>
+                        <li>— Next.js</li>
+                        <li>— TailwindCSS</li>
+                    </ul>
+                </div>
+
+                <!-- Backend -->
+                <div class="border border-vintage-ink p-6 bg-white/10">
+                    <h4 class="font-serif text-xl font-bold uppercase border-b border-vintage-ink pb-2 mb-4 flex items-center gap-2">
+                        <i data-lucide="database" class="w-5 h-5"></i> Backend & DB
+                    </h4>
+                    <ul class="font-mono text-sm space-y-2 text-vintage-lightInk">
+                        <li>— Node.js</li>
+                        <li>— MongoDB</li>
+                        <li>— Supabase</li>
+                    </ul>
+                </div>
+
+                <!-- Programming & AI -->
+                <div class="border border-vintage-ink p-6 bg-white/10 lg:col-span-2">
+                    <h4 class="font-serif text-xl font-bold uppercase border-b border-vintage-ink pb-2 mb-4 flex items-center gap-2 text-vintage-accent">
+                        <i data-lucide="bot" class="w-5 h-5"></i> Programming & AI
+                    </h4>
+                    <ul class="font-mono text-sm space-y-2 text-vintage-lightInk grid grid-cols-1 sm:grid-cols-2">
+                        <li>— Python</li>
+                        <li>— Basic AI Logic</li>
+                        <li>— Decision Systems</li>
+                        <li>— Data Flow Understanding</li>
+                    </ul>
+                </div>
+
+                <!-- Soft Skills -->
+                <div class="border border-vintage-ink p-6 bg-vintage-ink text-vintage-paper">
+                    <h4 class="font-serif text-xl font-bold uppercase border-b border-vintage-paper pb-2 mb-4 flex items-center gap-2">
+                        <i data-lucide="heart-handshake" class="w-5 h-5"></i> Soft Skills
+                    </h4>
+                    <ul class="font-mono text-sm space-y-2 text-gray-300">
+                        <li>— Teamwork & Comm.</li>
+                        <li>— Adaptability</li>
+                        <li>— Time Management</li>
+                        <li>— Attention to Detail</li>
+                        <li>— Initiative</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Cards (Editorial Style) -->
+        <section id="projects" class="py-12 border-t border-vintage-ink mt-8">
+            <h3 class="font-mono text-center uppercase tracking-[0.2em] mb-12 text-vintage-secondary">Exhibition of Works</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Project 1 -->
+                <article class="border border-vintage-ink p-6 relative group hover:bg-white/20 transition-colors duration-300">
+                    <div class="absolute top-0 right-0 p-2 border-b border-l border-vintage-ink font-mono text-xs">No. 01</div>
+                    <h4 class="font-serif text-3xl font-bold uppercase mb-2 mt-4 leading-none">AI Decision</h4>
+                    <h5 class="font-serif italic text-xl text-vintage-lightInk mb-4 border-b border-vintage-ink pb-4">Web App</h5>
+                    <p class="text-sm mb-4 text-vintage-lightInk min-h-[60px]">A web application that helps users make decisions based on logical inputs and simple AI-based rules.</p>
+                    
+                    <div class="mb-4">
+                        <span class="block text-xs font-bold uppercase mb-1">Role:</span>
+                        <span class="text-sm font-serif italic text-vintage-secondary">Frontend + Logic System</span>
+                    </div>
+
+                    <div class="font-mono text-xs uppercase tracking-widest text-vintage-accent mb-6">
+                        JavaScript / Python / React
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 font-bold uppercase text-xs hover:text-vintage-accent border-b-2 border-transparent hover:border-vintage-accent transition-all">
+                        Examine Work <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </article>
+
+                <!-- Project 2 -->
+                <article class="border-4 border-double border-vintage-ink p-6 relative group hover:bg-white/20 transition-colors duration-300">
+                    <div class="absolute top-0 right-0 p-2 font-mono text-xs">No. 02</div>
+                    <h4 class="font-serif text-3xl font-bold uppercase mb-2 mt-4 leading-none">Portfolio Website</h4>
+                    <h5 class="font-serif italic text-xl text-vintage-lightInk mb-4 border-b border-vintage-ink pb-4">Digital Archive</h5>
+                    <p class="text-sm mb-4 text-vintage-lightInk min-h-[60px]">A modern portfolio with dark/light mode, animations, and responsive layout to showcase work elegantly.</p>
+                    
+                    <div class="mb-4">
+                        <span class="block text-xs font-bold uppercase mb-1">Role:</span>
+                        <span class="text-sm font-serif italic text-vintage-secondary">UI Design + Frontend</span>
+                    </div>
+
+                    <div class="font-mono text-xs uppercase tracking-widest text-vintage-accent mb-6">
+                        HTML / Tailwind / JavaScript
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 font-bold uppercase text-xs hover:text-vintage-accent border-b-2 border-transparent hover:border-vintage-accent transition-all">
+                        Examine Work <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </article>
+
+                <!-- Project 3 -->
+                <article class="border-2 border-vintage-ink p-6 relative group bg-vintage-ink text-vintage-paper hover:bg-vintage-lightInk transition-colors duration-300">
+                    <div class="absolute top-0 right-0 p-2 border-b border-l border-vintage-paper font-mono text-xs">No. 03</div>
+                    <h4 class="font-serif text-3xl font-bold uppercase mb-2 mt-4 leading-none">Dashboard UI</h4>
+                    <h5 class="font-serif italic text-xl text-gray-300 mb-4 border-b border-vintage-paper pb-4">Interface Design</h5>
+                    <p class="text-sm mb-4 text-gray-400 min-h-[60px]">A clean and interactive dashboard interface meticulously designed for clear data visualization.</p>
+                    
+                    <div class="mb-4">
+                        <span class="block text-xs font-bold uppercase mb-1">Role:</span>
+                        <span class="text-sm font-serif italic text-gray-400">UI/UX + Frontend</span>
+                    </div>
+
+                    <div class="font-mono text-xs uppercase tracking-widest text-vintage-paper opacity-70 mb-6">
+                        Figma / React
+                    </div>
+                    <a href="#" class="inline-flex items-center gap-2 font-bold uppercase text-xs hover:text-white border-b-2 border-transparent hover:border-white transition-all">
+                        Examine Work <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                    </a>
+                </article>
+
+                <!-- Project 4 -->
+                <article class="border border-vintage-ink p-6 relative group hover:bg-white/20 transition-colors duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="absolute top-0 right-0 p-2 border-b border-l border-vintage-ink font-mono text-xs">No. 04</div>
+                        <h4 class="font-serif text-3xl font-bold uppercase mb-2 mt-4 leading-none">Landing Page</h4>
+                        <h5 class="font-serif italic text-xl text-vintage-lightInk mb-4 border-b border-vintage-ink pb-4">Conversion Design</h5>
+                        <p class="text-sm mb-4 text-vintage-lightInk min-h-[60px]">A high-conversion landing page with modern UI elements and flawless responsive design across devices.</p>
+                        
+                        <div class="mb-4">
+                            <span class="block text-xs font-bold uppercase mb-1">Role:</span>
+                            <span class="text-sm font-serif italic text-vintage-secondary">UI Designer</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-mono text-xs uppercase tracking-widest text-vintage-accent mb-6">
+                            Figma / HTML / CSS
+                        </div>
+                        <a href="#" class="inline-flex items-center gap-2 font-bold uppercase text-xs hover:text-vintage-accent border-b-2 border-transparent hover:border-vintage-accent transition-all">
+                            Examine Work <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-16 border-t-4 border-vintage-ink">
+            <h3 class="font-serif text-4xl font-bold uppercase mb-8 text-center">Professional Chronicles</h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+                
+                <div class="relative pl-6 border-l border-vintage-ink">
+                    <div class="absolute w-3 h-3 bg-vintage-accent rounded-full -left-[6.5px] top-2"></div>
+                    <h4 class="font-serif text-2xl font-bold mb-1">Freelance / Personal Projects</h4>
+                    <p class="font-mono text-xs uppercase text-vintage-secondary mb-4 tracking-widest">Ongoing Practice</p>
+                    <p class="text-vintage-lightInk leading-relaxed text-sm">
+                        Worked on diverse UI design and frontend development projects. Focused on creating highly responsive layouts, ensuring cross-browser compatibility, and drastically improving overall user experience through intuitive design patterns.
+                    </p>
+                </div>
+
+                <div class="relative pl-6 border-l border-vintage-ink">
+                    <div class="absolute w-3 h-3 bg-vintage-ink rounded-full -left-[6.5px] top-2"></div>
+                    <h4 class="font-serif text-2xl font-bold mb-1">Self Learning Journey</h4>
+                    <p class="font-mono text-xs uppercase text-vintage-secondary mb-4 tracking-widest">Continuous Evolution</p>
+                    <p class="text-vintage-lightInk leading-relaxed text-sm">
+                        Continuously learning advanced front-end development frameworks and actively exploring Artificial Intelligence systems through hands-on personal projects, bridging the gap between visual aesthetics and backend logic.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section class="py-8 border-y border-vintage-ink mb-12">
+            <h3 class="font-serif text-center text-xl italic mb-4">Daily Instruments</h3>
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-2 font-mono uppercase text-sm font-bold tracking-widest text-vintage-secondary">
+                <span>Figma</span>
+                <span class="text-vintage-accent">•</span>
+                <span>Canva</span>
+                <span class="text-vintage-accent">•</span>
+                <span>VS Code</span>
+                <span class="text-vintage-accent">•</span>
+                <span>Git</span>
+                <span class="text-vintage-accent">•</span>
+                <span>Chrome DevTools</span>
+            </div>
+        </section>
+
+        <!-- Feature / Value Section -->
+        <section class="py-12 bg-vintage-ink text-vintage-paper my-16 text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h3 class="font-mono uppercase tracking-[0.3em] text-xs text-vintage-paper/70 mb-8">Core Values</h3>
+                <div class="font-serif text-2xl sm:text-3xl font-bold italic leading-loose flex flex-wrap justify-center gap-x-8 gap-y-4">
+                    <span>User-Centered Design</span>
+                    <span class="text-vintage-accent not-italic">✦</span>
+                    <span>Clean Interface</span>
+                    <span class="text-vintage-accent not-italic">✦</span>
+                    <span>Responsive Development</span>
+                    <span class="text-vintage-accent not-italic">✦</span>
+                    <span>Problem Solving</span>
+                    <span class="text-vintage-accent not-italic">✦</span>
+                    <span>Fast Learner</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA & Contact Section -->
+        <section id="contact" class="py-16 text-center border-t-2 border-vintage-ink">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="font-serif text-4xl md:text-5xl font-bold uppercase mb-6 text-vintage-ink leading-tight">
+                    Interested in working together?
+                </h2>
+                <p class="font-serif italic text-xl text-vintage-lightInk mb-12">
+                    Let's build clean interfaces and intelligent systems.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                    <a href="#" class="px-8 py-3 border-2 border-vintage-ink font-mono font-bold uppercase tracking-widest text-sm hover:bg-vintage-ink hover:text-vintage-paper transition-colors w-full sm:w-auto">
+                        Download CV
+                    </a>
+                    <a href="#" class="px-8 py-3 bg-vintage-accent text-vintage-paper font-mono font-bold uppercase tracking-widest text-sm hover:bg-red-800 transition-colors w-full sm:w-auto shadow-[4px_4px_0_#1c1b18] hover:shadow-[2px_2px_0_#1c1b18] hover:translate-x-[2px] hover:translate-y-[2px]">
+                        Contact Me
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-vintage-ink mt-12 py-8 bg-white/30 backdrop-blur-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="font-serif font-bold uppercase text-xl text-center md:text-left">
+                LIUHAN
+                <p class="font-mono text-[10px] tracking-widest text-vintage-secondary mt-1">Design & Development</p>
+            </div>
+            
+            <div class="flex gap-6">
+                <a href="#" class="text-vintage-ink hover:text-vintage-accent transition-colors flex items-center gap-2 text-sm font-mono uppercase">
+                    <i data-lucide="mail" class="w-4 h-4"></i> <span class="hidden sm:inline">Email</span>
+                </a>
+                <a href="#" class="text-vintage-ink hover:text-vintage-accent transition-colors flex items-center gap-2 text-sm font-mono uppercase">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i> <span class="hidden sm:inline">LinkedIn</span>
+                </a>
+                <a href="#" class="text-vintage-ink hover:text-vintage-accent transition-colors flex items-center gap-2 text-sm font-mono uppercase">
+                    <i data-lucide="github" class="w-4 h-4"></i> <span class="hidden sm:inline">GitHub</span>
+                </a>
+                <a href="#" class="text-vintage-ink hover:text-vintage-accent transition-colors flex items-center gap-2 text-sm font-mono uppercase">
+                    <i data-lucide="instagram" class="w-4 h-4"></i> <span class="hidden sm:inline">Instagram</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
