@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUVI ASAKURA - PERSONAL PORTFOLIO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #f5f5f5;
+            --bg-secondary: #ffffff;
+            --bg-card: #fafafa;
+            --text-primary: #0a0a0a;
+            --text-secondary: #666666;
+            --border-color: #e5e5e5;
+            --accent-color: #ff6b6b;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.08);
+            --glow: 0 0 0 transparent;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0b0f19;
+            --bg-secondary: #111827;
+            --bg-card: #1a1f2e;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --border-color: #2a2f3e;
+            --accent-color: #ff6b6b;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 30px rgba(255, 107, 107, 0.15);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor Glow */
+        #cursor-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.1) 0%, transparent 70%);
+            transition: opacity 0.3s ease;
+            mix-blend-mode: screen;
+        }
+
+        [data-theme="light"] #cursor-glow {
+            opacity: 0;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typography */
+        .display-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+
+        .editorial-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 900;
+        }
+
+        /* Floating Animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(-3deg); }
+        }
+
+        .float-slow {
+            animation: float-slow 8s ease-in-out infinite;
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        [data-theme="dark"] .card:hover {
+            box-shadow: var(--shadow-lg), var(--glow);
+        }
+
+        /* Image Cards */
+        .image-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .image-card:hover {
+            transform: translateY(-12px) rotate(-2deg);
+        }
+
+        /* Doodle Elements */
+        .doodle {
+            position: absolute;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* Badge Styles */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--text-primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background: transparent;
+            color: var(--text-primary);
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 2px solid var(--text-primary);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            transform: translateY(-3px);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            width: 60px;
+            height: 32px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-thumb {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 22px;
+            height: 22px;
+            background: var(--text-primary);
+            border-radius: 50%;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        [data-theme="dark"] .theme-toggle-thumb {
+            left: 31px;
+        }
+
+        /* Project Card Hover Effects */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .project-card img {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: grayscale(100%);
+        }
+
+        .project-card:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        [data-theme="dark"] .project-card:hover {
+            box-shadow: var(--shadow-lg), var(--glow);
+        }
+
+        /* Timeline Styles */
+        .timeline-line {
+            position: absolute;
+            left: 24px;
+            top: 40px;
+            bottom: 40px;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 2px solid var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            z-index: 1;
+            position: relative;
+        }
+
+        /* Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        [data-theme="light"] .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Skill Card Glow */
+        .skill-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        [data-theme="dark"] .skill-card:hover {
+            box-shadow: var(--shadow-lg), 0 0 40px rgba(255, 107, 107, 0.2);
+        }
+
+        /* Navigation */
+        nav {
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="light"] nav {
+            background: rgba(245, 245, 245, 0.9);
+        }
+
+        [data-theme="dark"] nav {
+            background: rgba(17, 24, 39, 0.9);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .display-title {
+                font-size: 3rem;
+            }
+        }
+
+        /* Tag Cloud Animation */
+        @keyframes tagFloat1 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(10px, -15px); }
+        }
+
+        @keyframes tagFloat2 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-15px, 10px); }
+        }
+
+        @keyframes tagFloat3 {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(12px, 12px); }
+        }
+
+        .tag-1 { animation: tagFloat1 7s ease-in-out infinite; }
+        .tag-2 { animation: tagFloat2 8s ease-in-out infinite; }
+        .tag-3 { animation: tagFloat3 6s ease-in-out infinite; }
+
+        /* SVG Decorations */
+        .doodle-flower {
+            stroke: var(--text-primary);
+            opacity: 0.6;
+        }
+
+        .doodle-line {
+            stroke: var(--text-primary);
+            opacity: 0.3;
+        }
+
+        /* Status Badge */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cursor Glow -->
+    <div id="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="flex items-center gap-2">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+                <span class="font-bold text-lg">LUVI ASAKURA</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#home" class="hover:opacity-70 transition-opacity">Home</a>
+                <a href="#about" class="hover:opacity-70 transition-opacity">About</a>
+                <a href="#skills" class="hover:opacity-70 transition-opacity">Skills</a>
+                <a href="#experience" class="hover:opacity-70 transition-opacity">Experience</a>
+                <a href="#projects" class="hover:opacity-70 transition-opacity">Projects</a>
+                <a href="#contact" class="hover:opacity-70 transition-opacity">Contact</a>
+            </div>
+
+            <div class="theme-toggle" onclick="toggleTheme()">
+                <div class="theme-toggle-thumb"></div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center relative pt-24 pb-20 px-6">
+        <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Left Content -->
+            <div class="space-y-8 reveal">
+                <div class="flex items-center gap-3 flex-wrap">
+                    <span class="badge">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        </svg>
+                        Junior UI/UX Designer
+                    </span>
+                    <span class="badge">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                        Front-End Developer
+                    </span>
+                </div>
+
+                <div class="relative">
+                    <!-- Doodle Elements -->
+                    <svg class="doodle absolute -left-12 -top-8 w-20 h-20 float-slow" viewBox="0 0 100 100" fill="none">
+                        <path class="doodle-line" d="M10,50 Q30,20 50,50 T90,50" stroke-width="2"/>
+                    </svg>
+
+                    <h1 class="display-title text-7xl md:text-8xl lg:text-9xl leading-none">
+                        LUFIKA AYU FATIMAH
+                    </h1>
+                </div>
+
+                <p class="text-lg md:text-xl text-secondary max-w-lg" style="color: var(--text-secondary);">
+                    I design intuitive interfaces and build intelligent web experiences.
+                </p>
+
+                <div class="flex items-center gap-4 flex-wrap">
+                    <a href="#projects" class="btn-primary">
+                        View My Work
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        Contact Me
+                    </a>
+                </div>
+
+                <div class="pt-4">
+                    <div class="text-sm opacity-50 mb-2">Scroll Down</div>
+                    <svg class="w-6 h-6 float" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <polyline points="19 12 12 19 5 12"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Right Content - Profile Card -->
+            <div class="relative reveal" style="animation-delay: 0.2s;">
+                <!-- Decorative Elements -->
+                <svg class="doodle absolute -top-12 -right-8 w-24 h-24 float" viewBox="0 0 100 100" fill="none">
+                    <circle class="doodle-flower" cx="50" cy="50" r="15" stroke-width="2"/>
+                    <circle class="doodle-flower" cx="50" cy="30" r="8" stroke-width="2"/>
+                    <circle class="doodle-flower" cx="70" cy="50" r="8" stroke-width="2"/>
+                    <circle class="doodle-flower" cx="50" cy="70" r="8" stroke-width="2"/>
+                    <circle class="doodle-flower" cx="30" cy="50" r="8" stroke-width="2"/>
+                </svg>
+
+                <svg class="doodle absolute bottom-8 -right-8 w-20 h-20 float-slow" viewBox="0 0 100 100" fill="none">
+                    <path class="doodle-line" d="M20,50 L20,20 Q20,10 30,10 L70,10 Q80,10 80,20 L80,80 Q80,90 70,90 L30,90 Q20,90 20,80 Z" stroke-width="2"/>
+                </svg>
+
+                <div class="image-card relative">
+                    <img src="data:image/svg+xml,%3Csvg width='500' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='500' height='600' fill='%23e5e5e5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='20' fill='%23999'%3ELIUHAN%3C/text%3E%3C/svg%3E" 
+                         alt="Profile" 
+                         class="w-full h-auto rounded-2xl"
+                         style="aspect-ratio: 5/6; object-fit: cover;">
+                    
+                    <!-- Info Overlay -->
+                    <div class="absolute bottom-6 left-6 right-6 glass rounded-2xl p-4 space-y-2">
+                        <div class="flex items-center gap-2 text-sm">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                            </svg>
+                            Based in Indonesia
+                        </div>
+                        <div class="flex items-center gap-2 text-sm">
+                            <div class="status-dot"></div>
+                            Available for work
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decorative Text -->
+                <div class="absolute top-12 -left-12 editorial-title text-4xl opacity-10 rotate-[-15deg]">
+                    DEVLOPER
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left - Image -->
+                <div class="relative reveal">
+                    <!-- Doodle Elements -->
+                    <svg class="doodle absolute -top-8 -left-8 w-16 h-16 float" viewBox="0 0 100 100" fill="none">
+                        <circle class="doodle-flower" cx="50" cy="50" r="40" stroke-width="2"/>
+                        <circle class="doodle-flower" cx="50" cy="50" r="20" stroke-width="2"/>
+                        <line class="doodle-flower" x1="50" y1="10" x2="50" y2="30" stroke-width="2"/>
+                        <line class="doodle-flower" x1="50" y1="70" x2="50" y2="90" stroke-width="2"/>
+                    </svg>
+
+                    <div class="image-card max-w-md mx-auto">
+                        <img src="data:image/svg+xml,%3Csvg width='400' height='500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23e5e5e5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%23999'%3EAbout Image%3C/text%3E%3C/svg%3E" 
+                             alt="About" 
+                             class="w-full h-auto rounded-2xl"
+                             style="aspect-ratio: 4/5; object-fit: cover;">
+                    </div>
+
+                    <svg class="doodle absolute -bottom-6 -right-6 w-20 h-20 float-slow" viewBox="0 0 100 100" fill="none">
+                        <path class="doodle-line" d="M20,50 Q20,80 50,80 T80,50" stroke-width="2"/>
+                    </svg>
+                </div>
+
+                <!-- Right - Content -->
+                <div class="space-y-8 reveal" style="animation-delay: 0.2s;">
+                    <div class="space-y-4">
+                        <span class="text-sm uppercase tracking-wider opacity-50">About Me</span>
+                        <h2 class="text-4xl md:text-5xl font-bold">
+                            Crafting User-Centered<br/>
+                            Design & Meaningful Code
+                        </h2>
+                    </div>
+
+                    <div class="space-y-4 text-lg" style="color: var(--text-secondary);">
+                        <p>
+                            I'm a UI/UX Designer and Front-End Developer who enjoys creating clean, functional, and visually engaging digital experiences.
+                        </p>
+                        <p>
+                            I focus on combining design thinking with modern web technologies to build products that are not only beautiful but also solve real problems.
+                        </p>
+                    </div>
+
+                    <!-- Floating Tags -->
+                    <div class="flex flex-wrap gap-3 pt-4">
+                        <span class="badge tag-1">UI/UX Design</span>
+                        <span class="badge tag-2">Front-End</span>
+                        <span class="badge tag-3">AI Enthusiast</span>
+                        <span class="badge tag-1">Creative Thinker</span>
+                        <span class="badge tag-2">Problem Solver</span>
+                        <span class="badge tag-3">Detail Oriented</span>
+                    </div>
+
+                    <!-- Contact Card -->
+                    <div class="card p-6 space-y-4 mt-8">
+                        <div class="font-semibold text-lg">Let's Connect</div>
+                        <div class="space-y-3">
+                            <a href="mailto:liu.han@example.com" class="flex items-center gap-3 hover:opacity-70 transition-opacity">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                <span>liu.han@example.com</span>
+                            </a>
+                            <div class="flex items-center gap-4 pt-2">
+                                <a href="https://github.com" target="_blank" class="hover:opacity-70 transition-opacity">
+                                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://linkedin.com" target="_blank" class="hover:opacity-70 transition-opacity">
+                                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://instagram.com" target="_blank" class="hover:opacity-70 transition-opacity">
+                                    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-sm uppercase tracking-wider opacity-50">My Skills</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4">What I Bring to the Table</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- UI/UX Skills -->
+                <div class="card skill-card p-8 space-y-6 reveal">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-2xl font-bold">UI/UX Skills</h3>
+                        <svg class="w-12 h-12 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <line x1="9" y1="9" x2="15" y2="9"/>
+                            <line x1="9" y1="15" x2="15" y2="15"/>
+                        </svg>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            User Interface Design
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Wireframing
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Prototyping
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Design Systems
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            User Research
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Interaction Design
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Front-End Skills -->
+                <div class="card skill-card p-8 space-y-6 reveal" style="animation-delay: 0.1s;">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-2xl font-bold">Front-End Skills</h3>
+                        <svg class="w-12 h-12 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                        </svg>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            HTML5 & CSS3
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            JavaScript
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            React JS Basic
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Tailwind CSS
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Responsive UI
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Tools -->
+                <div class="card skill-card p-8 space-y-6 reveal" style="animation-delay: 0.2s;">
+                    <div class="flex items-center justify-between">
+                        <h3 class="text-2xl font-bold">Tools</h3>
+                        <svg class="w-12 h-12 opacity-50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                        </svg>
+                    </div>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Figma
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            VS Code
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            GitHub
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Canva
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                            Node.js
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experience" class="py-20 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16 reveal">
+                <span class="text-sm uppercase tracking-wider opacity-50">Experience</span>
+                <h2 class="text-4xl md:text-5xl font-bold mt-4">My Professional Journey</h2>
+            </div>
+
+            <div class="relative pl-20">
+                <!-- Timeline Line -->
+                <div class="timeline-line"></div>
+
+                <!-- Experience Items -->
+                <div class="space-y-16">
+                    <!-- Experience 1 -->
+                    <div class="reveal flex gap-8">
+                        <div class="timeline-circle flex-shrink-0">
+                            01
+                        </div>
+                        <div class="card p-6 flex-1">
+                            <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+                                <h3 class="text-xl font-bold">Freelance UI Designer</h3>
+                                <span class="text-sm opacity-50">2023 - Present</span>
+                            </div>
+                            <p style="color: var(--text-secondary);">
+                                Working with various clients to design user-friendly interfaces, create wireframes, and build responsive websites.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Experience 2 -->
+                    <div class="reveal flex gap-8" style="animation-delay: 0.1s;">
+                        <div class="timeline-circle flex-shrink-0">
+                            02
+                        </div>
+                        <div class="card p-6 flex-1">
+                            <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+                                <h3 class="text-xl font-bold">Salesforce Talent Accelerator Program</h3>
+                                <span class="text-sm opacity-50">2023</span>
+                            </div>
+                            <p style="color: var(--text-secondary);">
+                                Completed an intensive digital program focused on Salesforce fundamentals, CRM, and business process understanding.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Experience 3 -->
+                    <div class="reveal flex gap-8" style="animation-delay: 0.2s;">
+                        <div class="timeline-circle flex-shrink-0">
+                            03
+                        </div>
+                        <div class="card p-6 flex-1">
+                            <div class="flex justify-between items-start mb-4 flex-wrap gap-2">
+                                <h3 class="text-xl font-bold">UI/UX Project Experience</h3>
+                                <span class="text-sm opacity-50">2022 - 2023</span>
+                            </div>
+                            <p style="color: var(--text-secondary);">
+                                Participated in multiple UI/UX projects including landing pages, dashboards, and web applications.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Showcase -->
+    <section id="projects" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-end mb-16 reveal">
+                <div>
+                    <span class="text-sm uppercase tracking-wider opacity-50">Featured Projects</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-4">My Recent Work</h2>
+                </div>
+                <a href="#" class="btn-secondary hidden md:inline-flex">
+                    View All Projects
+                    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                        <polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card card p-4 reveal">
+                    <div class="overflow-hidden rounded-xl mb-4">
+                        <img src="data:image/svg+xml,%3Csvg width='600' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='400' fill='%23333'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23fff'%3EAI Decision Web App%3C/text%3E%3C/svg%3E" 
+                             alt="AI Decision Web App" 
+                             class="w-full h-64 object-cover">
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-2xl font-bold">AI Decision Web App</h3>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                            A logic-based web application that helps users make decisions through weighted scoring and interactive recommendations.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge text-xs">React</span>
+                            <span class="badge text-xs">TailwindCSS</span>
+                            <span class="badge text-xs">Python</span>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <a href="#" class="text-sm hover:opacity-70 transition-opacity flex items-center gap-1">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                Demo
+                            </a>
+                            <a href="#" class="text-sm hover:opacity-70 transition-opacity flex items-center gap-1">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card card p-4 reveal" style="animation-delay: 0.1s;">
+                    <div class="overflow-hidden rounded-xl mb-4">
+                        <img src="data:image/svg+xml,%3Csvg width='600' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='400' fill='%23444'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23fff'%3EPortfolio Website%3C/text%3E%3C/svg%3E" 
+                             alt="Portfolio Website" 
+                             class="w-full h-64 object-cover">
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-2xl font-bold">Portfolio Website</h3>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                            A responsive modern portfolio website with animated interactions and dual theme support.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge text-xs">HTML</span>
+                            <span class="badge text-xs">TailwindCSS</span>
+                            <span class="badge text-xs">JavaScript</span>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <a href="#" class="text-sm hover:opacity-70 transition-opacity flex items-center gap-1">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                Demo
+                            </a>
+                            <a href="#" class="text-sm hover:opacity-70 transition-opacity flex items-center gap-1">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card card p-4 reveal" style="animation-delay: 0.2s;">
+                    <div class="overflow-hidden rounded-xl mb-4">
+                        <img src="data:image/svg+xml,%3Csvg width='600' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='400' fill='%23555'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23fff'%3EDashboard UI%3C/text%3E%3C/svg%3E" 
+                             alt="Dashboard UI" 
+                             class="w-full h-64 object-cover">
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-2xl font-bold">Dashboard UI</h3>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                            Modern analytics dashboard UI focusing on user experience and clean data visualization.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge text-xs">Figma</span>
+                            <span class="badge text-xs">React</span>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <a href="#" class="text-sm hover:opacity-70 transition-opacity flex items-center gap-1">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                Demo
+                            </a>
+                            <a href="#" class="text-sm hover:opacity-70 transition-opacity flex items-center gap-1">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card card p-4 reveal" style="animation-delay: 0.3s;">
+                    <div class="overflow-hidden rounded-xl mb-4">
+                        <img src="data:image/svg+xml,%3Csvg width='600' height='400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='600' height='400' fill='%23666'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='24' fill='%23fff'%3ELanding Page Concept%3C/text%3E%3C/svg%3E" 
+                             alt="Landing Page Concept" 
+                             class="w-full h-64 object-cover">
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-2xl font-bold">Landing Page Concept</h3>
+                        <p class="text-sm" style="color: var(--text-secondary);">
+                            Creative landing page design for startup and digital product branding.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="badge text-xs">UI Design</span>
+                            <span class="badge text-xs">Figma</span>
+                        </div>
+                        <div class="flex gap-3 pt-2">
+                            <a href="#" class="text-sm hover:opacity-70 transition-opacity flex items-center gap-1">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    <polyline points="15 3 21 3 21 9"/>
+                                    <line x1="10" y1="14" x2="21" y2="3"/>
+                                </svg>
+                                Demo
+                            </a>
+                            <a href="#" class="text-sm hover:opacity-70 transition-opacity flex items-center gap-1">
+                                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                                </svg>
+                                Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="card p-12 md:p-16 relative overflow-hidden reveal">
+                <!-- Decorative Elements -->
+                <svg class="doodle absolute top-8 right-8 w-24 h-24 opacity-20 float" viewBox="0 0 100 100" fill="none">
+                    <circle class="doodle-flower" cx="50" cy="50" r="40" stroke-width="3"/>
+                    <circle class="doodle-flower" cx="50" cy="50" r="20" stroke-width="3"/>
+                </svg>
+
+                <div class="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+                    <!-- Left - Image -->
+                    <div class="space-y-6">
+                        <div class="image-card max-w-sm">
+                            <img src="data:image/svg+xml,%3Csvg width='400' height='500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='500' fill='%23e5e5e5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='16' fill='%23999'%3ELIUHAN%3C/text%3E%3C/svg%3E" 
+                                 alt="Contact" 
+                                 class="w-full h-auto rounded-2xl"
+                                 style="aspect-ratio: 4/5; object-fit: cover;">
+                        </div>
+                    </div>
+
+                    <!-- Right - Content -->
+                    <div class="space-y-8">
+                        <div class="space-y-4">
+                            <h2 class="editorial-title text-4xl md:text-5xl lg:text-6xl leading-tight">
+                                Let's Build Something<br/>
+                                <span style="background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                                    Amazing Together
+                                </span>
+                            </h2>
+                            <p class="text-lg" style="color: var(--text-secondary);">
+                                I'm open to freelance work, collaboration, and exciting opportunities. Let's create impactful digital experiences.
+                            </p>
+                        </div>
+
+                        <div class="flex gap-4 flex-wrap">
+                            <a href="#" class="btn-primary">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                                Download CV
+                            </a>
+                            <a href="mailto:liu.han@example.com" class="btn-secondary">
+                                Hire Me
+                            </a>
+                        </div>
+
+                        <!-- What I Do Card -->
+                        <div class="glass rounded-2xl p-6 space-y-4 mt-8">
+                            <h3 class="font-bold text-lg">What I Do</h3>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    UI/UX Design
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    Front-End Development
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    Responsive Web Design
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <polyline points="20 6 9 17 4 12"/>
+                                    </svg>
+                                    Problem Solving
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8 pb-8 border-b" style="border-color: var(--border-color);">
+                <div class="text-center md:text-left">
+                    <div class="font-bold text-2xl mb-2">Get in Touch</div>
+                    <a href="mailto:liu.han@example.com" class="hover:opacity-70 transition-opacity">
+                        liu.han@example.com
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <a href="https://github.com" target="_blank" class="hover:opacity-70 transition-all hover:scale-110">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="hover:opacity-70 transition-all hover:scale-110">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="hover:opacity-70 transition-all hover:scale-110">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="hover:opacity-70 transition-all hover:scale-110">
+                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4 pt-8">
+                <div class="text-sm opacity-50">
+                    © 2024 LUVI ASAKURA. All rights reserved.
+                </div>
+                <button onclick="scrollToTop()" class="btn-secondary text-sm py-2 px-4">
+                    Back to Top
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="19" x2="12" y2="5"/>
+                        <polyline points="5 12 12 5 19 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        });
+
+        // Cursor Glow Effect
+        const cursorGlow = document.getElementById('cursor-glow');
+        document.addEventListener('mousemove', (e) => {
+            cursorGlow.style.left = (e.clientX - 150) + 'px';
+            cursorGlow.style.top = (e.clientY - 150) + 'px';
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        function checkReveal() {
+            revealElements.forEach((element) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementBottom = element.getBoundingClientRect().bottom;
+                
+                if (elementTop < window.innerHeight - 100 && elementBottom > 0) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkReveal);
+        window.addEventListener('load', checkReveal);
+
+        // Smooth Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Navbar Background on Scroll
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = 'var(--shadow-md)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Parallax Effect for Floating Elements
+        document.addEventListener('mousemove', (e) => {
+            const moveX = (e.clientX - window.innerWidth / 2) * 0.01;
+            const moveY = (e.clientY - window.innerHeight / 2) * 0.01;
+            
+            document.querySelectorAll('.float, .float-slow').forEach((element) => {
+                element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+
+        // Mobile Menu Toggle (if needed)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Project Card 3D Tilt Effect
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Intersection Observer for Stagger Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('active');
+                    }, index * 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Add active class to nav links based on scroll position
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionHeight = section.offsetHeight;
+                const sectionTop = section.offsetTop - 100;
+                const sectionId = section.getAttribute('id');
+                const navLink = document.querySelector(`nav a[href="#${sectionId}"]`);
+
+                if (navLink && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    document.querySelectorAll('nav a').forEach(link => {
+                        link.style.opacity = '0.5';
+                    });
+                    navLink.style.opacity = '1';
+                } else if (navLink) {
+                    navLink.style.opacity = '0.7';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
