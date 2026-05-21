@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="id" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio UI/UX Designer & Developer</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@200;400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        cine: {
+                            bg: '#06080f',
+                            surface: '#0f1724',
+                            card: '#151c2c',
+                            text: '#e5e7eb',
+                            muted: '#9ca3af',
+                            border: 'rgba(255, 255, 255, 0.06)'
+                        },
+                        light: {
+                            bg: '#f8fafc',
+                            surface: '#ffffff',
+                            border: 'rgba(0, 0, 0, 0.08)',
+                            text: '#0f172a',
+                            muted: '#475569'
+                        },
+                        accent: {
+                            blue: '#3b82f6',
+                            orange: '#f97316'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'glow-pulse': 'glow 8s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        glow: {
+                            '0%, 100%': { opacity: 0.7, transform: 'scale(1)' },
+                            '50%': { opacity: 1, transform: 'scale(1.05)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <style type="text/tailwindcss">
+        @layer base {
+            body {
+                @apply bg-light-bg text-light-text transition-colors duration-500 overflow-x-hidden;
+            }
+            .dark body {
+                @apply bg-cine-bg text-cine-text;
+            }
+        }
+
+        @layer components {
+            /* Cinematic Glassmorphism Panels */
+            .glass-panel {
+                @apply bg-white/80 backdrop-blur-xl border border-light-border shadow-sm transition-all duration-500;
+            }
+
+            .dark .glass-panel {
+                background-color: rgba(21, 28, 44, 0.65); /* #151c2c with opacity */
+                border-color: theme('colors.cine.border');
+                box-shadow: 0 10px 40px -10px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.03);
+            }
+
+            .dark .glass-panel:hover {
+                background-color: rgba(21, 28, 44, 0.85);
+                border-color: rgba(255, 255, 255, 0.1);
+                box-shadow: 0 15px 40px -5px rgba(59, 130, 246, 0.12), inset 0 1px 0 rgba(255,255,255,0.06);
+            }
+        }
+
+        /* Tekstur Noise Premium */
+        .bg-noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: -2;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .dark .bg-noise {
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Typography layering for Hero */
+        .text-layered {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .dark .text-layered {
+            -webkit-text-stroke: 1px rgba(255,255,255,0.03);
+        }
+
+        .text-layered::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0;
+            height: 100%;
+            color: theme('colors.light.text');
+            -webkit-text-stroke: 0px;
+            overflow: hidden;
+            animation: fillText 4s ease-in-out infinite alternate;
+        }
+
+        .dark .text-layered::before {
+            color: theme('colors.cine.text');
+            text-shadow: 0 0 40px rgba(59, 130, 246, 0.2);
+        }
+
+        @keyframes fillText {
+            0% { width: 0; }
+            100% { width: 100%; }
+        }
+
+        /* Glowing Border Effect */
+        .glow-border {
+            position: relative;
+        }
+        
+        .glow-border::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(45deg, transparent, rgba(0,0,0,0.1), transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .dark .glow-border::before {
+            background: linear-gradient(45deg, transparent, theme('colors.accent.blue'), theme('colors.accent.orange'), transparent);
+            background-size: 200% 200%;
+            animation: panGlow 5s linear infinite;
+        }
+
+        @keyframes panGlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glow-border:hover::before {
+            opacity: 1;
+        }
+
+        /* Cinematic Background Elements (Orbs) */
+        .bg-glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            transition: opacity 0.5s ease;
+        }
+        
+        /* Blue Cinematic Glow */
+        .dark .bg-glow-orb.orb-1 {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 65%);
+        }
+
+        /* Orange Cinematic Glow */
+        .dark .bg-glow-orb.orb-2 {
+            background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, rgba(0,0,0,0) 65%);
+        }
+
+        /* Scroll Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Mouse Follower Glow */
+        #mouse-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            transition: background 0.5s ease;
+            mix-blend-mode: multiply;
+        }
+
+        .dark #mouse-glow {
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.06) 0%, transparent 60%);
+            mix-blend-mode: screen;
+        }
+
+        /* Hide scrollbar for features */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        /* Modal setup */
+        body.modal-open {
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans selection:bg-slate-300 selection:text-black dark:selection:bg-blue-500/30 dark:selection:text-cine-text">
+
+    <!-- Efek Noise untuk Tema Gelap -->
+    <div class="bg-noise"></div>
+
+    <!-- Mouse Follower -->
+    <div id="mouse-glow" class="hidden md:block"></div>
+
+    <!-- Cinematic Background Orbs -->
+    <div class="fixed top-[-10%] left-[-10%] w-[60vw] h-[60vw] bg-glow-orb orb-1 animate-glow-pulse pointer-events-none"></div>
+    <div class="fixed bottom-[-20%] right-[-10%] w-[70vw] h-[70vw] bg-glow-orb orb-2 animate-glow-pulse pointer-events-none delay-1000"></div>
+
+    <!-- Navigasi -->
+    <nav class="fixed top-0 w-full z-50 glass-panel !border-x-0 !border-t-0 !rounded-none !bg-white/60 dark:!bg-cine-surface/60 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="font-display font-bold text-xl tracking-tighter flex items-center gap-2 text-light-text dark:text-cine-text transition-colors duration-500">
+                <span class="w-8 h-8 rounded-full bg-light-text text-white dark:bg-cine-card dark:text-cine-text flex items-center justify-center text-sm shadow-[0_0_15px_rgba(255,255,255,0.05)] border border-transparent dark:border-cine-border transition-colors duration-500">AC</span>
+                Alma Choi
+            </a>
+            
+            <div class="hidden md:flex space-x-8 text-sm font-medium text-light-muted dark:text-cine-muted">
+                <a href="#about" class="hover:text-light-text dark:hover:text-cine-text transition-colors">Tentang</a>
+                <a href="#skills" class="hover:text-light-text dark:hover:text-cine-text transition-colors">Keahlian</a>
+                <a href="#projects" class="hover:text-light-text dark:hover:text-cine-text transition-colors">Proyek</a>
+                <a href="#contact" class="hover:text-light-text dark:hover:text-cine-text transition-colors">Kontak</a>
+            </div>
+
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-black/5 dark:hover:bg-cine-card transition-colors text-light-muted dark:text-cine-muted" aria-label="Ganti Tema">
+                <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- BAGIAN HERO -->
+        <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+            <!-- Elemen UI Melayang (Parallax) -->
+            <div class="parallax-el absolute top-1/4 left-[10%] w-48 glass-panel rounded-2xl p-4 hidden lg:block animate-float origin-bottom-left" data-speed="-2">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border flex items-center justify-center transition-colors duration-500">
+                        <i data-lucide="layout" class="w-4 h-4 opacity-70 text-light-muted dark:text-cine-muted"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-semibold text-light-text dark:text-cine-text transition-colors duration-500">Wireframe.fig</div>
+                        <div class="text-[10px] text-light-muted dark:text-cine-muted transition-colors duration-500">Diedit 2m lalu</div>
+                    </div>
+                </div>
+                <div class="h-16 rounded-lg border border-dashed border-slate-300 dark:border-cine-border flex items-center justify-center transition-colors duration-500">
+                    <span class="text-[10px] uppercase tracking-widest text-light-muted dark:text-cine-muted transition-colors duration-500">Komponen</span>
+                </div>
+            </div>
+
+            <div class="parallax-el absolute bottom-1/4 right-[10%] w-64 glass-panel rounded-2xl p-4 hidden lg:block animate-float-delayed" data-speed="3">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-xs font-mono text-light-muted dark:text-cine-muted transition-colors duration-500">domain.ts</span>
+                    <span class="text-[10px] bg-emerald-100 text-emerald-700 dark:bg-emerald-900/20 dark:text-emerald-400 dark:border dark:border-emerald-500/20 px-2 py-1 rounded-full transition-colors duration-500">Berhasil</span>
+                </div>
+                <pre class="text-[10px] font-mono leading-relaxed text-light-text dark:text-cine-text transition-colors duration-500">
+<span class="text-purple-600 dark:text-purple-400">await</span> api.domains.update({
+  <span class="text-blue-600 dark:text-blue-400">openTracking</span>: <span class="text-orange-600 dark:text-orange-400">false</span>,
+  <span class="text-blue-600 dark:text-blue-400">clickTracking</span>: <span class="text-orange-600 dark:text-orange-400">true</span>
+});</pre>
+            </div>
+            <!-- Komposisi Tengah -->
+            <div class="relative z-10 text-center px-4 w-full max-w-5xl mx-auto flex flex-col items-center justify-center">
+                
+                <!-- Teks Berlapis Latar Belakang -->
+                <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none select-none opacity-20 dark:opacity-10 mix-blend-overlay z-0 translate-y-[-5%]">
+                    <h1 class="font-display font-black text-[12vw] leading-[0.8] tracking-tighter text-layered" data-text="DESAIN">DESAIN</h1>
+                    <h1 class="font-display font-black text-[12vw] leading-[0.8] tracking-tighter text-layered delay-100" data-text="ANTARMUKA">ANTARMUKA</h1>
+                    <h1 class="font-display font-black text-[12vw] leading-[0.8] tracking-tighter text-layered delay-200" data-text="PENGALAMAN">PENGALAMAN</h1>
+                </div>
+
+                <!-- Konten Depan -->
+                <div class="relative z-10 flex flex-col items-center reveal">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-panel text-xs font-medium mb-8 text-light-text dark:text-cine-text transition-colors duration-500">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                        </span>
+                        Tersedia untuk peluang baru
+                    </div>
+                    
+                    <h2 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-4 text-light-text dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-b dark:from-white dark:to-cine-muted transition-colors duration-500">
+                        Alma Choi
+                    </h2>
+                    
+                    <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base font-medium text-light-muted dark:text-blue-200/50 mb-8 uppercase tracking-widest transition-colors duration-500">
+                        <span>Desainer UI/UX Junior</span>
+                        <span class="hidden md:inline">•</span>
+                        <span>Developer Front-End</span>
+                    </div>
+
+                    <p class="max-w-lg text-light-muted dark:text-cine-muted text-lg md:text-xl leading-relaxed mb-12 transition-colors duration-500">
+                        "Saya merancang antarmuka yang intuitif dan membangun pengalaman digital yang responsif untuk menghidupkan kembali keajaiban pada perangkat lunak."
+                    </p>
+
+                    <div class="flex gap-4">
+                        <a href="#projects" class="px-8 py-4 rounded-full bg-light-text text-white dark:bg-cine-card dark:text-cine-text font-semibold dark:border dark:border-cine-border hover:scale-105 hover:bg-slate-800 dark:hover:bg-blue-600/20 transition-all duration-300 shadow-xl shadow-black/20 dark:shadow-blue-900/10">
+                            Lihat Karya
+                        </a>
+                        <a href="#contact" class="px-8 py-4 rounded-full glass-panel glow-border font-semibold text-light-text dark:text-cine-text hover:bg-slate-50 dark:hover:bg-cine-card/80 transition-all duration-300">
+                            Hubungi Saya
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indikator gulir -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-50 text-light-muted dark:text-cine-muted transition-colors duration-500">
+                <i data-lucide="arrow-down" class="w-6 h-6"></i>
+            </div>
+        </section>
+
+        <!-- BAGIAN TENTANG -->
+        <section id="about" class="py-24 md:py-32 relative z-10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    
+                    <!-- Kiri: Kartu Gambar Abstrak/Potret -->
+                    <div class="reveal relative group order-2 lg:order-1">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/20 to-orange-500/20 blur-2xl rounded-[3rem] group-hover:blur-3xl transition-all duration-500 opacity-50 dark:opacity-100"></div>
+                        <div class="glass-panel p-2 rounded-[2.5rem] relative overflow-hidden aspect-[4/5] md:aspect-square lg:aspect-[4/5] glow-border">
+                            <div class="w-full h-full rounded-[2rem] bg-slate-200 dark:bg-[#0a0f18] relative overflow-hidden flex items-center justify-center transition-colors duration-500">
+                                <img src="https://i.pinimg.com/1200x/c1/b0/35/c1b035fc6bcac6841f3c6f989fbdc9d6.jpg" alt="Foto Profil Alma Choi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                                
+                                <!-- Bayangan halus di bagian tepi dalam gambar agar menyatu dengan bingkai -->
+                                <div class="absolute inset-0 rounded-[2rem] shadow-[inset_0_0_20px_rgba(0,0,0,0.1)] dark:shadow-[inset_0_0_30px_rgba(0,0,0,0.4)] pointer-events-none"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kanan: Konten Teks -->
+                    <div class="reveal delay-100 order-1 lg:order-2">
+                        <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 tracking-tight text-light-text dark:text-cine-text transition-colors duration-500">
+                            Menciptakan pengalaman perangkat lunak yang terasa <span class="text-transparent bg-clip-text bg-gradient-to-r from-slate-500 to-slate-800 dark:from-blue-400 dark:to-orange-400">ajaib</span>.
+                        </h2>
+                        
+                        <div class="space-y-6 text-light-muted dark:text-cine-muted text-lg leading-relaxed mb-10 transition-colors duration-500">
+                            <p>
+                                Saya menjembatani kesenjangan antara desain dan rekayasa. Sebagai desainer yang menulis kode, saya memastikan bahwa visi awal dapat diterjemahkan dengan sempurna ke dalam produk akhir.
+                            </p>
+                            <p>
+                                Fokus saya adalah menciptakan antarmuka pengguna yang bersih dan intuitif, didukung oleh pengembangan front-end yang tangguh dan responsif. Saya percaya pada pemikiran sistem, aksesibilitas, dan kekuatan interaksi mikro.
+                            </p>
+                        </div>
+
+                        <!-- Tag Melayang -->
+                        <div class="flex flex-wrap gap-3">
+                            <span class="glass-panel px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-50 dark:hover:bg-cine-card/80 text-light-text dark:text-cine-text transition-all cursor-default shadow-sm hover:scale-105">Desain UI/UX</span>
+                            <span class="glass-panel px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-50 dark:hover:bg-cine-card/80 text-light-text dark:text-cine-text transition-all cursor-default shadow-sm hover:scale-105">Wireframing</span>
+                            <span class="glass-panel px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-50 dark:hover:bg-cine-card/80 text-light-text dark:text-cine-text transition-all cursor-default shadow-sm hover:scale-105">Prototyping</span>
+                            <span class="glass-panel px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-50 dark:hover:bg-cine-card/80 text-light-text dark:text-cine-text transition-all cursor-default shadow-sm hover:scale-105">Dev Front-End</span>
+                            <span class="glass-panel px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-50 dark:hover:bg-cine-card/80 text-light-text dark:text-cine-text transition-all cursor-default shadow-sm hover:scale-105">Tata Letak Responsif</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STRIP FITUR -->
+        <section class="py-12 border-y border-slate-200 dark:border-cine-border bg-slate-50/50 dark:bg-cine-surface/40 overflow-hidden relative z-10 transition-colors duration-500">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 md:gap-4 reveal">
+                    
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 rounded-full glass-panel flex items-center justify-center glow-border group-hover:scale-110 transition-transform">
+                            <i data-lucide="brain" class="w-5 h-5 text-light-text dark:text-cine-text"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-light-text dark:text-cine-text transition-colors duration-500">Berpusat pada Pengguna</h4>
+                            <p class="text-xs text-light-muted dark:text-cine-muted transition-colors duration-500">Merancang dengan empati untuk pengguna akhir.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 rounded-full glass-panel flex items-center justify-center glow-border group-hover:scale-110 transition-transform">
+                            <i data-lucide="layers" class="w-5 h-5 text-light-text dark:text-cine-text"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-light-text dark:text-cine-text transition-colors duration-500">Sistem Bersih</h4>
+                            <p class="text-xs text-light-muted dark:text-cine-muted transition-colors duration-500">Pola UI yang dapat diskalakan dan konsisten.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 rounded-full glass-panel flex items-center justify-center glow-border group-hover:scale-110 transition-transform">
+                            <i data-lucide="smartphone" class="w-5 h-5 text-light-text dark:text-cine-text"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-light-text dark:text-cine-text transition-colors duration-500">Responsif</h4>
+                            <p class="text-xs text-light-muted dark:text-cine-muted transition-colors duration-500">Tata letak tanpa cacat di semua perangkat.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 rounded-full glass-panel flex items-center justify-center glow-border group-hover:scale-110 transition-transform">
+                            <i data-lucide="zap" class="w-5 h-5 text-light-text dark:text-cine-text"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm uppercase tracking-wider mb-1 text-light-text dark:text-cine-text transition-colors duration-500">Dioptimalkan</h4>
+                            <p class="text-xs text-light-muted dark:text-cine-muted transition-colors duration-500">Kode yang cepat, dapat diakses, dan semantik.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN KEAHLIAN -->
+        <section id="skills" class="py-24 md:py-32 relative z-10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 tracking-tight text-light-text dark:text-cine-text transition-colors duration-500">Peralatan Teknis</h2>
+                    <p class="text-light-muted dark:text-cine-muted transition-colors duration-500">Alat dan teknologi yang saya gunakan untuk membangun pengalaman digital.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Keahlian Desain -->
+                    <div class="glass-panel p-8 rounded-3xl reveal delay-100 glow-border group hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-cine-surface flex items-center justify-center mb-6 border border-slate-200 dark:border-cine-border transition-colors duration-500">
+                            <i data-lucide="pen-tool" class="w-6 h-6 text-light-text dark:text-cine-text"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-6 text-light-text dark:text-cine-text transition-colors duration-500">Desain</h3>
+                        <ul class="space-y-4 text-light-muted dark:text-cine-muted transition-colors duration-500">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-blue-400 group-hover:animate-pulse"></span>Desain UI/UX</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-blue-400 group-hover:animate-pulse"></span>Wireframing</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-blue-400 group-hover:animate-pulse"></span>Prototyping</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-blue-400 group-hover:animate-pulse"></span>Sistem Desain</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-blue-400 group-hover:animate-pulse"></span>Riset Pengguna</li>
+                        </ul>
+                    </div>
+
+                    <!-- Keahlian Pengembangan -->
+                    <div class="glass-panel p-8 rounded-3xl reveal delay-200 glow-border group hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-cine-surface flex items-center justify-center mb-6 border border-slate-200 dark:border-cine-border transition-colors duration-500">
+                            <i data-lucide="code-2" class="w-6 h-6 text-light-text dark:text-cine-text"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-6 text-light-text dark:text-cine-text transition-colors duration-500">Pengembangan</h3>
+                        <ul class="space-y-4 text-light-muted dark:text-cine-muted transition-colors duration-500">
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-orange-400 group-hover:animate-pulse"></span>HTML5</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-orange-400 group-hover:animate-pulse"></span>CSS3 / Animasi</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-orange-400 group-hover:animate-pulse"></span>JavaScript (ES6+)</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-orange-400 group-hover:animate-pulse"></span>Tailwind CSS</li>
+                            <li class="flex items-center gap-3"><span class="w-1.5 h-1.5 rounded-full bg-light-text dark:bg-orange-400 group-hover:animate-pulse"></span>Desain Responsif</li>
+                        </ul>
+                    </div>
+
+                    <!-- Alat -->
+                    <div class="glass-panel p-8 rounded-3xl reveal delay-300 glow-border group hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-cine-surface flex items-center justify-center mb-6 border border-slate-200 dark:border-cine-border transition-colors duration-500">
+                            <i data-lucide="box" class="w-6 h-6 text-light-text dark:text-cine-text"></i>
+                        </div>
+                        <h3 class="font-bold text-xl mb-6 text-light-text dark:text-cine-text transition-colors duration-500">Alat</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <div class="px-3 py-2 rounded-lg bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border text-sm font-medium flex items-center gap-2 text-light-text dark:text-cine-text transition-colors duration-500">
+                                <i data-lucide="figma" class="w-4 h-4"></i> Figma
+                            </div>
+                            <div class="px-3 py-2 rounded-lg bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border text-sm font-medium flex items-center gap-2 text-light-text dark:text-cine-text transition-colors duration-500">
+                                <i data-lucide="monitor" class="w-4 h-4"></i> VS Code
+                            </div>
+                            <div class="px-3 py-2 rounded-lg bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border text-sm font-medium flex items-center gap-2 text-light-text dark:text-cine-text transition-colors duration-500">
+                                Adobe XD
+                            </div>
+                            <div class="px-3 py-2 rounded-lg bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border text-sm font-medium flex items-center gap-2 text-light-text dark:text-cine-text transition-colors duration-500">
+                                Photoshop
+                            </div>
+                            <div class="px-3 py-2 rounded-lg bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border text-sm font-medium flex items-center gap-2 text-light-text dark:text-cine-text transition-colors duration-500">
+                                Illustrator
+                            </div>
+                            <div class="px-3 py-2 rounded-lg bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border text-sm font-medium flex items-center gap-2 text-light-text dark:text-cine-text transition-colors duration-500">
+                                Git / GitHub
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN PROYEK -->
+        <section id="projects" class="py-24 md:py-32 relative z-10">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                    <div>
+                        <h2 class="font-display text-4xl md:text-5xl font-bold mb-4 tracking-tight text-light-text dark:text-cine-text transition-colors duration-500">Karya Pilihan</h2>
+                        <p class="text-light-muted dark:text-cine-muted max-w-md transition-colors duration-500">Sebuah etalase pemikiran desain dan eksekusi frontend.</p>
+                    </div>
+                    <a href="#" class="hidden md:inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-light-muted hover:text-light-text dark:text-cine-muted dark:hover:text-cine-text transition-colors mt-6 md:mt-0 duration-300">
+                        Lihat Semua Proyek <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                    
+                    <!-- Proyek 1 -->
+                    <div class="group reveal relative z-10">
+                        <div class="glass-panel rounded-3xl overflow-hidden glow-border transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
+                            <!-- Kontainer Gambar -->
+                            <div class="relative aspect-video overflow-hidden bg-slate-200 dark:bg-cine-surface cursor-pointer transition-colors duration-500" onclick="openModal('proj1')">
+                                <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=2000&auto=format&fit=crop" alt="Dasbor Fintech" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                                    <span class="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium flex items-center gap-2">
+                                        <i data-lucide="eye" class="w-4 h-4"></i> Lihat Detail
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Konten -->
+                            <div class="p-8">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="font-bold text-2xl text-light-text dark:text-cine-text group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">Nova Financial</h3>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-cine-surface flex items-center justify-center hover:bg-slate-200 dark:hover:bg-cine-card transition-colors border border-slate-200 dark:border-cine-border text-light-text dark:text-cine-text" title="Lihat Kode">
+                                        <i data-lucide="github" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                                <p class="text-light-muted dark:text-cine-muted mb-6 line-clamp-2 transition-colors duration-500">UI dasbor komprehensif untuk startup fintech modern yang berfokus pada visualisasi data dan alur pengguna yang bersih.</p>
+                                <div class="flex flex-wrap gap-2 text-light-muted dark:text-cine-muted">
+                                    <span class="text-xs font-mono px-2 py-1 rounded bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500">UI/UX</span>
+                                    <span class="text-xs font-mono px-2 py-1 rounded bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500">Tailwind</span>
+                                    <span class="text-xs font-mono px-2 py-1 rounded bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500">JS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyek 2 -->
+                    <div class="group reveal delay-100 relative z-10 md:mt-16">
+                        <div class="glass-panel rounded-3xl overflow-hidden glow-border transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
+                            <!-- Kontainer Gambar -->
+                            <div class="relative aspect-video overflow-hidden bg-slate-200 dark:bg-cine-surface cursor-pointer transition-colors duration-500" onclick="openModal('proj2')">
+                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2000&auto=format&fit=crop" alt="Template Portofolio Developer" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100 grayscale-[30%] group-hover:grayscale-0">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                                    <span class="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium flex items-center gap-2">
+                                        <i data-lucide="eye" class="w-4 h-4"></i> Lihat Detail
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Konten -->
+                            <div class="p-8">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="font-bold text-2xl text-light-text dark:text-cine-text group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">Tema DevSpace</h3>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-cine-surface flex items-center justify-center hover:bg-slate-200 dark:hover:bg-cine-card transition-colors border border-slate-200 dark:border-cine-border text-light-text dark:text-cine-text" title="Lihat Kode">
+                                        <i data-lucide="github" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                                <p class="text-light-muted dark:text-cine-muted mb-6 line-clamp-2 transition-colors duration-500">Template portofolio sinematik yang dioptimalkan untuk mode gelap, dirancang khusus untuk para developer dan kreator.</p>
+                                <div class="flex flex-wrap gap-2 text-light-muted dark:text-cine-muted">
+                                    <span class="text-xs font-mono px-2 py-1 rounded bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500">Sistem Desain</span>
+                                    <span class="text-xs font-mono px-2 py-1 rounded bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500">HTML/CSS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyek 3 -->
+                    <div class="group reveal relative z-10">
+                        <div class="glass-panel rounded-3xl overflow-hidden glow-border transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
+                            <div class="relative aspect-video overflow-hidden bg-slate-200 dark:bg-cine-surface cursor-pointer transition-colors duration-500" onclick="openModal('proj3')">
+                                <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2000&auto=format&fit=crop" alt="Pengalaman E-commerce" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+                                    <span class="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium flex items-center gap-2">
+                                        <i data-lucide="eye" class="w-4 h-4"></i> Lihat Detail
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="font-bold text-2xl text-light-text dark:text-cine-text group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">Aura Commerce</h3>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-cine-surface flex items-center justify-center hover:bg-slate-200 dark:hover:bg-cine-card transition-colors border border-slate-200 dark:border-cine-border text-light-text dark:text-cine-text" title="Lihat Kode">
+                                        <i data-lucide="github" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                                <p class="text-light-muted dark:text-cine-muted mb-6 line-clamp-2 transition-colors duration-500">Konsep untuk toko e-commerce mode minimalis dengan transisi halaman yang mulus dan interaksi mikro.</p>
+                                <div class="flex flex-wrap gap-2 text-light-muted dark:text-cine-muted">
+                                    <span class="text-xs font-mono px-2 py-1 rounded bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500">Figma</span>
+                                    <span class="text-xs font-mono px-2 py-1 rounded bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500">Prototyping</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyek 4 -->
+                    <div class="group reveal delay-100 relative z-10 md:mt-16">
+                         <div class="glass-panel rounded-3xl overflow-hidden glow-border transition-all duration-500 group-hover:shadow-2xl group-hover:-translate-y-2">
+                            <div class="relative aspect-video overflow-hidden bg-slate-200 dark:bg-cine-surface cursor-pointer transition-colors duration-500" onclick="openModal('proj4')">
+                                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-orange-500/20 mix-blend-overlay z-10 dark:opacity-60"></div>
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop" alt="Visualisasi Data" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100 grayscale">
+                                <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm z-20">
+                                    <span class="px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white font-medium flex items-center gap-2">
+                                        <i data-lucide="eye" class="w-4 h-4"></i> Lihat Detail
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <div class="flex justify-between items-start mb-4">
+                                    <h3 class="font-bold text-2xl text-light-text dark:text-cine-text group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">Aplikasi Metrik</h3>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-cine-surface flex items-center justify-center hover:bg-slate-200 dark:hover:bg-cine-card transition-colors border border-slate-200 dark:border-cine-border text-light-text dark:text-cine-text" title="Lihat Kode">
+                                        <i data-lucide="github" class="w-4 h-4"></i>
+                                    </a>
+                                </div>
+                                <p class="text-light-muted dark:text-cine-muted mb-6 line-clamp-2 transition-colors duration-500">Antarmuka aplikasi web responsif yang dirancang untuk melacak kebiasaan harian dan metrik produktivitas. Dilengkapi dengan dukungan mode gelap.</p>
+                                <div class="flex flex-wrap gap-2 text-light-muted dark:text-cine-muted">
+                                    <span class="text-xs font-mono px-2 py-1 rounded bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500">Build Frontend</span>
+                                    <span class="text-xs font-mono px-2 py-1 rounded bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500">Responsif</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class="mt-12 text-center md:hidden">
+                     <a href="#" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-light-muted hover:text-light-text dark:text-cine-muted dark:hover:text-cine-text transition-colors mt-6 md:mt-0 duration-300">
+                        Lihat Semua Proyek <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- BAGIAN CV & KONTAK -->
+        <section id="contact" class="py-24 relative z-10 overflow-hidden">
+            <!-- Blur latar belakang dekoratif untuk bagian ini -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] md:w-[40vw] md:h-[40vw] bg-slate-200 dark:bg-cine-surface/40 rounded-full blur-[100px] -z-10 pointer-events-none transition-colors duration-500"></div>
+
+            <div class="max-w-4xl mx-auto px-6">
+                
+                <!-- Kartu CV -->
+                <div class="glass-panel p-10 md:p-16 rounded-[2.5rem] text-center mb-16 reveal glow-border">
+                    <h2 class="font-display text-4xl md:text-5xl font-bold mb-6 tracking-tight text-light-text dark:text-cine-text transition-colors duration-500">Tertarik untuk bekerja sama?</h2>
+                    <p class="text-light-muted dark:text-cine-muted text-lg mb-10 max-w-lg mx-auto transition-colors duration-500">
+                        Saya saat ini terbuka untuk peran junior dan peluang lepas. Mari bangun sesuatu yang menakjubkan bersama.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="#" class="px-8 py-4 rounded-full bg-light-text text-white dark:bg-cine-card dark:text-cine-text dark:border dark:border-cine-border font-semibold hover:scale-105 hover:bg-slate-800 dark:hover:bg-blue-600/20 transition-all duration-300 shadow-xl shadow-black/10 dark:shadow-blue-900/10 flex items-center justify-center gap-2">
+                            <i data-lucide="download" class="w-5 h-5"></i> Unduh CV
+                        </a>
+                        <a href="mailto:hello@example.com" class="px-8 py-4 rounded-full glass-panel glow-border font-semibold text-light-text dark:text-cine-text hover:bg-slate-50 dark:hover:bg-cine-card/80 transition-all duration-300 flex items-center justify-center gap-2">
+                            <i data-lucide="mail" class="w-5 h-5"></i> Sapa Saya
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Panel Tautan Sosial -->
+                <div class="glass-panel p-8 rounded-full flex justify-center items-center gap-8 md:gap-16 reveal delay-100 mx-auto max-w-fit glow-border">
+                    <a href="#" class="text-light-muted hover:text-light-text dark:text-cine-muted dark:hover:text-cine-text transition-all hover:scale-125 hover:-translate-y-1 duration-300">
+                        <i data-lucide="github" class="w-8 h-8"></i>
+                        <span class="sr-only">GitHub</span>
+                    </a>
+                    <a href="#" class="text-light-muted hover:text-blue-500 dark:text-cine-muted dark:hover:text-blue-400 transition-all hover:scale-125 hover:-translate-y-1 duration-300">
+                        <i data-lucide="linkedin" class="w-8 h-8"></i>
+                        <span class="sr-only">LinkedIn</span>
+                    </a>
+                    <a href="#" class="text-light-muted hover:text-pink-500 dark:text-cine-muted dark:hover:text-pink-400 transition-all hover:scale-125 hover:-translate-y-1 duration-300">
+                        <i data-lucide="dribbble" class="w-8 h-8"></i>
+                        <span class="sr-only">Dribbble</span>
+                    </a>
+                    <a href="#" class="text-light-muted hover:text-light-text dark:text-cine-muted dark:hover:text-cine-text transition-all hover:scale-125 hover:-translate-y-1 duration-300">
+                        <i data-lucide="twitter" class="w-8 h-8"></i>
+                        <span class="sr-only">Twitter</span>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-8 text-center text-sm text-light-muted dark:text-cine-muted border-t border-slate-200 dark:border-cine-border transition-colors duration-500">
+            <p>© <span id="year"></span> Alma Choi. Didesain & Dibangun dengan HTML, Tailwind & JS.</p>
+        </footer>
+    </main>
+
+    <!-- MODAL PROYEK (Disembunyikan secara default) -->
+    <div id="project-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-300">
+        <!-- Latar Belakang Modal -->
+        <div class="absolute inset-0 bg-white/80 dark:bg-cine-bg/90 backdrop-blur-xl transition-opacity" onclick="closeModal()"></div>
+        
+        <!-- Konten Modal -->
+        <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto glass-panel rounded-3xl glow-border shadow-2xl transform scale-95 transition-transform duration-300" id="modal-content-wrapper">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/50 dark:bg-cine-surface/50 backdrop-blur-md flex items-center justify-center hover:bg-slate-200 dark:hover:bg-cine-card transition-colors border border-slate-200 dark:border-cine-border text-light-text dark:text-cine-text">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+
+            <div class="w-full aspect-video bg-slate-200 dark:bg-cine-surface relative transition-colors duration-500">
+                <img id="modal-image" src="" alt="Pratinjau Proyek" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="p-8 md:p-12">
+                <div class="flex flex-wrap gap-2 mb-4 text-light-muted dark:text-cine-muted" id="modal-tags">
+                    <!-- Tag dimasukkan via JS -->
+                </div>
+                
+                <h3 id="modal-title" class="font-display text-3xl md:text-4xl font-bold mb-4 text-light-text dark:text-cine-text transition-colors duration-500">Judul Proyek</h3>
+                
+                <p id="modal-desc" class="text-light-muted dark:text-cine-muted text-lg leading-relaxed mb-8 transition-colors duration-500">
+                    Deskripsi detail proyek ada di sini.
+                </p>
+
+                <h4 class="font-bold uppercase tracking-wider text-sm mb-4 text-light-text dark:text-cine-text transition-colors duration-500">Fitur Utama</h4>
+                <ul class="list-disc list-inside space-y-2 text-light-muted dark:text-cine-muted mb-8 transition-colors duration-500" id="modal-features">
+                    <!-- Fitur dimasukkan via JS -->
+                </ul>
+                
+                <div class="flex gap-4 pt-6 border-t border-slate-200 dark:border-cine-border transition-colors duration-500">
+                    <a href="#" class="px-6 py-3 rounded-full bg-light-text text-white dark:bg-cine-card dark:text-cine-text dark:border dark:border-cine-border font-semibold hover:scale-105 transition-transform text-sm hover:bg-slate-800 dark:hover:bg-blue-600/20">
+                        Pratinjau Langsung
+                    </a>
+                    <a href="#" class="px-6 py-3 rounded-full glass-panel font-semibold hover:bg-slate-50 dark:hover:bg-cine-surface transition-colors text-sm flex items-center gap-2 text-light-text dark:text-cine-text">
+                        <i data-lucide="github" class="w-4 h-4"></i> Lihat Sumber
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logika JavaScript -->
+    <script>
+        // Inisialisasi Ikon Lucide
+        lucide.createIcons();
+
+        // Atur tahun saat ini di footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // --- Logika Ganti Tema ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const htmlElement = document.documentElement;
+        
+        // Periksa penyimpanan lokal atau preferensi sistem
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            htmlElement.classList.add('dark');
+        } else {
+            htmlElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            htmlElement.classList.toggle('dark');
+            if (htmlElement.classList.contains('dark')) {
+                localStorage.theme = 'dark';
+            } else {
+                localStorage.theme = 'light';
+            }
+        });
+
+        // --- Animasi Ungkap Saat Digulir (Intersection Observer) ---
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('active');
+                observer.unobserve(entry.target); // Jalankan sekali
+            });
+        }, revealOptions);
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- Efek Parallax Mouse untuk Elemen Hero ---
+        const parallaxElements = document.querySelectorAll('.parallax-el');
+        const heroSection = document.querySelector('section');
+
+        heroSection.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth - 0.5;
+            const y = e.clientY / window.innerHeight - 0.5;
+
+            parallaxElements.forEach(el => {
+                const speed = el.getAttribute('data-speed');
+                const xOffset = x * speed * 30;
+                const yOffset = y * speed * 30;
+                
+                el.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+            });
+        });
+        
+        heroSection.addEventListener('mouseleave', () => {
+             parallaxElements.forEach(el => {
+                 el.style.transform = `translate(0px, 0px)`;
+                 el.style.transition = `transform 0.5s ease`;
+             });
+        });
+        heroSection.addEventListener('mouseenter', () => {
+             parallaxElements.forEach(el => {
+                 el.style.transition = `none`;
+             });
+        });
+
+
+        // --- Efek Cahaya Pengikut Mouse ---
+        const glow = document.getElementById('mouse-glow');
+        
+        window.addEventListener('mousemove', (e) => {
+            requestAnimationFrame(() => {
+                glow.style.left = e.clientX + 'px';
+                glow.style.top = e.clientY + 'px';
+            });
+        });
+
+        document.addEventListener('mouseleave', () => {
+            glow.style.opacity = '0';
+        });
+        document.addEventListener('mouseenter', () => {
+            glow.style.opacity = '1';
+        });
+
+        // --- Logika Modal ---
+        const modal = document.getElementById('project-modal');
+        const modalContentWrapper = document.getElementById('modal-content-wrapper');
+        
+        const projectData = {
+            proj1: {
+                title: "Dasbor Nova Financial",
+                img: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=2000&auto=format&fit=crop",
+                desc: "UI dasbor komprehensif untuk startup fintech modern. Tujuannya adalah mengambil data keuangan yang kompleks dan menyajikannya dalam format yang bersih dan mudah dicerna menggunakan teknik visualisasi data tingkat lanjut dan alur pengguna yang intuitif. Dirancang dengan pendekatan mode gelap pertama untuk mengurangi ketegangan mata bagi pengguna berat.",
+                tags: ["Desain UI/UX", "Figma", "Tailwind CSS", "JavaScript"],
+                features: ["Bagan interaktif", "Dukungan mode Gelap/Terang", "Tabel data responsif", "Sistem desain berbasis komponen"]
+            },
+            proj2: {
+                title: "Tema Portofolio DevSpace",
+                img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2000&auto=format&fit=crop",
+                desc: "Template portofolio premium yang dioptimalkan untuk mode gelap yang dirancang khusus untuk para developer. Berfokus pada efek pencahayaan sinematik, glassmorphism, dan animasi gulir halus tanpa bergantung pada kerangka kerja (framework) yang berat.",
+                tags: ["HTML", "Vanilla CSS", "Desain UI"],
+                features: ["Nol dependensi", "Animasi CSS kustom", "Struktur HTML semantik", "Skor Lighthouse sempurna"]
+            },
+            proj3: {
+                title: "Konsep Aura Commerce",
+                img: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=2000&auto=format&fit=crop",
+                desc: "Prototipe fidelitas tinggi untuk merek e-commerce mode minimalis. Desainnya menekankan gambar besar, ruang putih yang luas, dan interaksi mikro yang sangat halus untuk menciptakan nuansa belanja premium.",
+                tags: ["Prototyping", "Riset Pengguna", "Wireframing"],
+                features: ["Prototipe Figma yang kompleks", "Pemetaan alur pengguna", "Desain set ikon kustom", "Perencanaan interaksi mikro"]
+            },
+            proj4: {
+                title: "Aplikasi Pelacak Metrik",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2000&auto=format&fit=crop",
+                desc: "Antarmuka aplikasi web responsif yang dirancang untuk melacak kebiasaan harian dan metrik produktivitas. Dilengkapi dengan tata letak berbasis kartu yang bersih dengan palet warna yang menenangkan.",
+                tags: ["Build Frontend", "Desain Responsif", "CSS Grid"],
+                features: ["Tata letak mobile-first", "Arsitektur CSS Grid", "Gaya form kustom", "Rasio kontras yang dapat diakses"]
+            }
+        };
+
+        function openModal(projectId) {
+            const data = projectData[projectId];
+            if(!data) return;
+
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-image').src = data.img;
+            document.getElementById('modal-desc').textContent = data.desc;
+            
+            const tagsContainer = document.getElementById('modal-tags');
+            tagsContainer.innerHTML = '';
+            data.tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'text-xs font-mono px-3 py-1.5 rounded-full bg-slate-100 dark:bg-cine-surface border border-slate-200 dark:border-cine-border transition-colors duration-500';
+                span.textContent = tag;
+                tagsContainer.appendChild(span);
+            });
+
+            const featuresContainer = document.getElementById('modal-features');
+            featuresContainer.innerHTML = '';
+            data.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                featuresContainer.appendChild(li);
+            });
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.body.classList.add('modal-open');
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContentWrapper.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContentWrapper.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.classList.remove('modal-open');
+            }, 300);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>

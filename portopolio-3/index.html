@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUVI ASAKURA — PERSONAL PORTFOLIO</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CDN Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- File css -->
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+
+<!-- CRT Grid -->
+<div class="grid-bg"></div>
+
+<!-- =====================================================
+     NAVIGATION
+     ===================================================== -->
+<nav>
+    <a href="#home" class="nav-logo">LUVI_ASAKURA.EXE</a>
+    <ul class="nav-links">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#skills">SKILLS</a></li>
+        <li><a href="#experience">XP</a></li>
+        <li><a href="#projects">WORK</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <button class="theme-toggle-btn" onclick="toggleTheme()">[ THEME ]</button>
+</nav>
+
+<!-- =====================================================
+     HERO
+     ===================================================== -->
+<section id="home">
+    <!-- Pixel decorations -->
+    <div class="px-deco px-square" style="top:20%;left:8%;animation-delay:0s;"></div>
+    <div class="px-deco px-square-outline" style="top:35%;left:92%;animation-delay:1s;"></div>
+    <div class="px-deco px-square" style="top:70%;left:5%;width:6px;height:6px;animation-delay:2s;background:var(--accent2)"></div>
+    <div class="px-deco px-square-outline" style="top:15%;left:78%;animation-delay:0.5s;border-color:var(--accent3)"></div>
+    <div class="px-deco px-square" style="top:80%;left:88%;width:5px;height:5px;animation-delay:1.5s;background:var(--accent4)"></div>
+
+    <div class="hero-container">
+        <div class="hero-label">Interactive Web Developer | AI Engineer</div>
+
+        <h1 class="hero-name glitch" data-text="LUFIKA AYU FATIMAH">
+            LUFIKA AYU FATIMAH
+        </h1>
+
+        <p class="hero-sub">
+            &lt; crafting clean digital experiences &amp; elegant front-end architectures /&gt;<span class="cursor-blink"></span>
+        </p>
+
+        <div style="display:flex;justify-content:center;gap:16px;flex-wrap:wrap;">
+            <a href="#projects" class="px-btn px-btn-accent">[ VIEW WORK ]</a>
+            <a href="mailto:lufikabgy337@gmail.com" class="px-btn">[ HIRE ME ]</a>
+        </div>
+
+        <!-- RPG-style stats -->
+        <div class="hero-stats">
+            <div class="stat-item">
+                <div class="stat-label">UI/UX</div>
+                <div class="stat-bar">
+                    <div class="stat-fill" style="width:88%;background:var(--accent);"></div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">FRONT-END</div>
+                <div class="stat-bar">
+                    <div class="stat-fill" style="width:82%;background:var(--accent2);"></div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">REACT</div>
+                <div class="stat-bar">
+                    <div class="stat-fill" style="width:75%;background:var(--accent3);"></div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">PYTHON</div>
+                <div class="stat-bar">
+                    <div class="stat-fill" style="width:65%;background:var(--accent4);"></div>
+                </div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-label">AI/ML</div>
+                <div class="stat-bar">
+                    <div class="stat-fill" style="width:70%;background:var(--accent5);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     ABOUT
+     ===================================================== -->
+<section id="about">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <div class="section-tag">about_me</div>
+            <h2 class="section-title">CRAFTING USER-CENTERED<br/>DESIGN &amp; MEANINGFUL CODE</h2>
+        </div>
+
+        <div class="about-grid">
+            <!-- Image -->
+            <div class="reveal">
+                <div class="about-img-frame img-scanline">
+                    <div class="corner-deco tl"></div>
+                    <div class="corner-deco tr"></div>
+                    <div class="corner-deco bl"></div>
+                    <div class="corner-deco br"></div>
+                    <img src="img/pp-me.png" alt="Lufika Ayu Fatimah" />
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="reveal" style="transition-delay:0.1s;">
+                <p>I'm a UI/UX Designer and Front-End Developer who enjoys creating clean, functional, and visually engaging digital experiences.</p>
+                <p>I focus on combining design thinking with modern web technologies to build products that are not only beautiful but also solve real problems.</p>
+
+                <div class="tag-cloud">
+                    <span class="px-badge">UI/UX Design</span>
+                    <span class="px-badge">AI Enthusiast</span>
+                    <span class="px-badge">Creative Thinker</span>
+                    <span class="px-badge">Problem Solver</span>
+                    <span class="px-badge">Detail Oriented</span>
+                    <span class="px-badge">Web Designer</span>
+                    <span class="px-badge">User-Friendly</span>
+                    <span class="px-badge">Interaction Design</span>
+                    <span class="px-badge">Web Developer</span>
+                    <span class="px-badge">Front-end Dev</span>
+                    <span class="px-badge">Responsive Design</span>
+                </div>
+
+                <div class="pixel-box contact-card">
+                    <div class="corner-deco tl"></div>
+                    <div class="corner-deco tr"></div>
+                    <div class="corner-deco bl"></div>
+                    <div class="corner-deco br"></div>
+                    <div class="contact-card-title">// LET'S CONNECT</div>
+                    <a href="mailto:lufikabgy337@gmail.com" class="contact-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        lufikabgy337@gmail.com
+                    </a>
+                    <div class="social-row">
+                        <a href="https://github.com/lufikaZkl30" target="_blank" class="social-icon" title="GitHub">
+                            <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lufikaayu" target="_blank" class="social-icon" title="LinkedIn">
+                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     SKILLS
+     ===================================================== -->
+<section id="skills">
+    <div class="section-inner" style="padding-bottom:0;">
+        <div class="section-header reveal">
+            <div class="section-tag">tools_and_tech</div>
+            <h2 class="section-title">TOOLS &amp; TECHNOLOGIES</h2>
+        </div>
+    </div>
+
+    <!-- Marquee Row 1 -->
+    <div class="marquee-wrap reveal" style="margin-bottom:16px;">
+        <div class="marquee-track left">
+            <!-- Set 1 -->
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">HTML5</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="">CSS3</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="">React</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="">Tailwind CSS</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="">Node.js</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="">Figma</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="">VS Code</div>
+            <!-- Set 2 duplicate -->
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">HTML5</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="">CSS3</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">JavaScript</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="">React</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg" alt="">Tailwind CSS</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="">Node.js</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="">Figma</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="">VS Code</div>
+        </div>
+    </div>
+
+    <!-- Marquee Row 2 -->
+    <div class="marquee-wrap reveal" style="padding-bottom:80px;">
+        <div class="marquee-track right">
+            <!-- Set 1 -->
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="">Supabase</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="">Next.js</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="">Git</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="">Bootstrap</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="">GitHub</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Gemini Pro</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="">Antigravity</div>
+            <!-- Set 2 duplicate -->
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Python</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg" alt="">Supabase</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="">Next.js</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="">Git</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="">Bootstrap</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="">GitHub</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">Gemini Pro</div>
+            <div class="skill-chip"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="">Antigravity</div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     EXPERIENCE
+     ===================================================== -->
+<section id="experience">
+    <div class="section-inner">
+        <div class="section-header reveal">
+            <div class="section-tag">experience</div>
+            <h2 class="section-title">MY PROFESSIONAL JOURNEY</h2>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"></div>
+                <div class="pixel-box timeline-card">
+                    <div class="corner-deco tl"></div>
+                    <div class="corner-deco br"></div>
+                    <div class="timeline-meta">
+                        <div class="timeline-role">FREELANCE UI DESIGNER</div>
+                        <div class="timeline-date">2023 — PRESENT</div>
+                    </div>
+                    <p class="timeline-desc">Working with various clients to design user-friendly interfaces, create wireframes, and build responsive websites.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal" style="transition-delay:0.1s;">
+                <div class="timeline-dot"></div>
+                <div class="pixel-box timeline-card">
+                    <div class="corner-deco tl"></div>
+                    <div class="corner-deco br"></div>
+                    <div class="timeline-meta">
+                        <div class="timeline-role">SALESFORCE TALENT ACCELERATOR</div>
+                        <div class="timeline-date">2023</div>
+                    </div>
+                    <p class="timeline-desc">Completed an intensive digital program focused on Salesforce fundamentals, CRM, and business process understanding.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item reveal" style="transition-delay:0.2s;">
+                <div class="timeline-dot"></div>
+                <div class="pixel-box timeline-card">
+                    <div class="corner-deco tl"></div>
+                    <div class="corner-deco br"></div>
+                    <div class="timeline-meta">
+                        <div class="timeline-role">UI/UX PROJECT EXPERIENCE</div>
+                        <div class="timeline-date">2022 — 2023</div>
+                    </div>
+                    <p class="timeline-desc">Participated in multiple UI/UX projects including landing pages, dashboards, and web applications.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     PROJECTS
+     ===================================================== -->
+<section id="projects">
+    <div class="section-inner">
+        <div class="section-header reveal" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;">
+            <div>
+                <div class="section-tag">featured_projects</div>
+                <h2 class="section-title">MY RECENT WORK</h2>
+            </div>
+            <a href="https://github.com/lufikaZkl30" target="_blank" class="px-btn" style="font-size:7px;">[ VIEW ALL ]</a>
+        </div>
+
+        <div class="projects-grid">
+
+            <!-- ═══════════════════════════════════
+                 PROJECT CARD 1 — ClassTeams-Info
+                 HOW TO ADD YOUR STICKERS:
+                 Replace the <img src="..."> inside .sticker-container
+                 with your own image paths, e.g.: src="img/sticker-star.png"
+                 You can have 2–4 stickers per card.
+                 ─────────────────────────────────── -->
+            <div class="project-card reveal">
+                <!-- STICKER CONTAINER — drops from top on hover -->
+                <div class="sticker-container">
+                    <!--
+                        STICKER SLOT 1 — replace src with your sticker image
+                        Example: <img class="sticker" src="img/sticker-pixel-star.png" alt="">
+                    -->
+                    <img class="sticker" src="img/sticker1.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\' xmlns=\'http://www.w3.org/2000/svg\'><text y=\'52\' font-size=\'52\' text-anchor=\'middle\' x=\'32\'>⭐</text></svg>'">
+                    <!--
+                        STICKER SLOT 2
+                        Example: <img class="sticker" src="img/sticker-pixel-heart.png" alt="">
+                    -->
+                    <img class="sticker" src="img/sticker2.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\' xmlns=\'http://www.w3.org/2000/svg\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>🎮</text></svg>'">
+                    <!--
+                        STICKER SLOT 3
+                        Example: <img class="sticker" src="img/sticker-pixel-cloud.png" alt="">
+                    -->
+                    <img class="sticker" src="img/sticker3.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\' xmlns=\'http://www.w3.org/2000/svg\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>✨</text></svg>'">
+                </div>
+
+                <div class="load-bar"></div>
+                <div class="project-img-wrap img-scanline">
+                    <img src="img/project-1.png" alt="ClassTeams-Info">
+                </div>
+                <div class="project-body">
+                    <div class="project-title">CLASSTEAMS-INFO</div>
+                    <p class="project-desc">Website untuk promosikan kelas teams yang dibuat dengan menggunakan Next.js dan Tailwind CSS.</p>
+                    <div class="project-tags">
+                        <span class="px-badge">Next.js</span>
+                        <span class="px-badge">Tailwind CSS</span>
+                        <span class="px-badge">Supabase</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            DEMO
+                        </a>
+                        <a href="https://github.com/lufikaZkl30/classteams-info" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            CODE
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════════════════
+                 PROJECT CARD 2 — YT Emotion Analyzer
+                 ─────────────────────────────────── -->
+            <div class="project-card reveal" style="transition-delay:0.1s;">
+                <div class="sticker-container">
+                    <img class="sticker" src="img/sticker4.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>🔬</text></svg>'">
+                    <img class="sticker" src="img/sticker5.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>📊</text></svg>'">
+                    <img class="sticker" src="img/sticker6.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>🤖</text></svg>'">
+                </div>
+
+                <div class="load-bar"></div>
+                <div class="project-img-wrap img-scanline">
+                    <img src="img/project-2.png" alt="YT Emotion Analyzer">
+                </div>
+                <div class="project-body">
+                    <div class="project-title">YT EMOTION ANALYZER</div>
+                    <p class="project-desc">Website untuk menganalisa komentar pada video YouTube dengan menggunakan API Google dan Chart.js.</p>
+                    <div class="project-tags">
+                        <span class="px-badge">HTML</span>
+                        <span class="px-badge">Tailwind CSS</span>
+                        <span class="px-badge">JavaScript</span>
+                        <span class="px-badge">Python</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            DEMO
+                        </a>
+                        <a href="https://github.com/lufikaZkl30/yt-emotion-analyzer" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            CODE
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════════════════
+                 PROJECT CARD 3 — Design Link Bio
+                 ─────────────────────────────────── -->
+            <div class="project-card reveal" style="transition-delay:0.2s;">
+                <div class="sticker-container">
+                    <img class="sticker" src="img/sticker7.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>🔗</text></svg>'">
+                    <img class="sticker" src="img/sticker8.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>💅</text></svg>'">
+                    <img class="sticker" src="img/sticker9.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>🌐</text></svg>'">
+                </div>
+
+                <div class="load-bar"></div>
+                <div class="project-img-wrap img-scanline">
+                    <img src="img/project-3.png" alt="Design Link Bio">
+                </div>
+                <div class="project-body">
+                    <div class="project-title">DESIGN LINK BIO</div>
+                    <p class="project-desc">Design link bio untuk digunakan pada media sosial, deployed via Netlify.</p>
+                    <div class="project-tags">
+                        <span class="px-badge">HTML5</span>
+                        <span class="px-badge">Tailwind CSS</span>
+                        <span class="px-badge">Netlify</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://luviasakura-bio.netlify.app" target="_blank" class="project-link">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            DEMO
+                        </a>
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            CODE
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════════════════
+                 PROJECT CARD 4 — MindEase AI
+                 ─────────────────────────────────── -->
+            <div class="project-card reveal" style="transition-delay:0.3s;">
+                <div class="sticker-container">
+                    <img class="sticker" src="img/sticker10.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>🧠</text></svg>'">
+                    <img class="sticker" src="img/sticker11.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>💬</text></svg>'">
+                    <img class="sticker" src="img/sticker12.png" alt=""
+                         onerror="this.outerHTML='<svg class=\'sticker sticker-svg\' viewBox=\'0 0 64 64\'><text y=\'52\' font-size=\'48\' text-anchor=\'middle\' x=\'32\'>🌸</text></svg>'">
+                </div>
+
+                <div class="load-bar"></div>
+                <div class="project-img-wrap img-scanline">
+                    <img src="img/project-4.png" alt="MindEase AI">
+                </div>
+                <div class="project-body">
+                    <div class="project-title">MINDEASE AI</div>
+                    <p class="project-desc">Website yang menyediakan layanan cerita interaktif bertenaga AI untuk kesejahteraan mental.</p>
+                    <div class="project-tags">
+                        <span class="px-badge">HTML5</span>
+                        <span class="px-badge">Tailwind CSS</span>
+                        <span class="px-badge">Netlify</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://mindease-ai.netlify.app/" target="_blank" class="project-link">
+                            <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            DEMO
+                        </a>
+                        <a href="#" class="project-link">
+                            <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            CODE
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /projects-grid -->
+    </div>
+</section>
+
+<!-- =====================================================
+     CONTACT CTA
+     ===================================================== -->
+<section id="contact">
+    <div class="section-inner">
+        <div class="pixel-box reveal" style="padding:48px 40px;position:relative;">
+            <div class="corner-deco tl"></div>
+            <div class="corner-deco tr"></div>
+            <div class="corner-deco bl"></div>
+            <div class="corner-deco br"></div>
+
+            <div class="cta-grid">
+                <!-- Image -->
+                <div>
+                    <div class="cta-img-wrap img-scanline">
+                        <img src="https://i.pinimg.com/736x/80/9f/1d/809f1d7f767e422406872cdd5642be86.jpg" alt="Contact">
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div>
+                    <div class="section-tag">contact</div>
+                    <h2 class="cta-title">
+                        LET'S BUILD SOMETHING<br/>
+                        <span>AMAZING TOGETHER</span>
+                    </h2>
+                    <p class="cta-desc">
+                        Terbuka untuk freelance, kolaborasi, dan peluang menarik. Mari ciptakan pengalaman digital yang berkesan.
+                    </p>
+
+                    <div class="cta-buttons">
+                        <a href="#" class="px-btn px-btn-accent">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            DOWNLOAD CV
+                        </a>
+                        <a href="mailto:lufikabgy337@gmail.com" class="px-btn">HIRE ME</a>
+                    </div>
+
+                    <div class="pixel-box what-i-do">
+                        <div class="corner-deco tl"></div>
+                        <div class="what-i-do-title">// WHAT I DO</div>
+                        <div class="do-item">UI/UX Design</div>
+                        <div class="do-item">Front-End Development</div>
+                        <div class="do-item">Responsive Web Design</div>
+                        <div class="do-item">Problem Solving</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div>
+                <div class="footer-email-label">// GET IN TOUCH</div>
+                <a href="mailto:lufikabgy337@gmail.com" class="footer-email">lufikabgy337@gmail.com</a>
+            </div>
+            <div class="social-row">
+                <a href="https://github.com/lufikaZkl30" target="_blank" class="social-icon" title="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/lufikaayu" target="_blank" class="social-icon" title="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-copy">© 2026 LUVI ASAKURA. ALL RIGHTS RESERVED.</span>
+            <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="px-btn" style="font-size:7px;">[ BACK TO TOP ↑ ]</button>
+        </div>
+    </div>
+</footer>
+
+<!-- =====================================================
+     SCRIPTS
+     ===================================================== -->
+<script>
+    /* --- Theme Toggle --- */
+    function toggleTheme() {
+        const html = document.documentElement;
+        const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('px-theme', next);
+    }
+    (function() {
+        const saved = localStorage.getItem('px-theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', saved);
+    })();
+
+    /* --- Scroll Reveal --- */
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('visible'), i * 80);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* --- Active nav link on scroll --- */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 80) current = s.id;
+        });
+        navLinks.forEach(a => {
+            a.style.color = a.getAttribute('href') === '#' + current
+                ? 'var(--text)'
+                : '';
+        });
+    }, { passive: true });
+
+    /* --- Typewriter effect for hero --- */
+    (function() {
+        const el = document.querySelector('.hero-sub');
+        if (!el) return;
+        const text = el.textContent;
+        el.textContent = '';
+        el.style.opacity = '1';
+        let i = 0;
+        const cursor = document.querySelector('.cursor-blink');
+        function type() {
+            if (i < text.length) {
+                el.insertBefore(document.createTextNode(text[i++]), cursor);
+                setTimeout(type, 22);
+            }
+        }
+        setTimeout(type, 600);
+    })();
+</script>
+</body>
+</html>

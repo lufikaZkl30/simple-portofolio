@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUFIKA AYU FATIMAH — PORTFOLIO</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CDN Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- File css -->
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+
+<!-- Animated background -->
+<div class="bg-grid"></div>
+
+<!-- NAVIGATION -->
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="#home" class="nav-logo">LUFIKA_AF.EXE</a>
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#skills">SKILLS</a></li>
+            <li><a href="#projects">WORK</a></li>
+            <li><a href="#experience">XP</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        <div class="nav-right">
+            <button class="theme-toggle-btn px-btn" onclick="toggleTheme()" aria-label="Toggle Theme">
+                <span class="theme-label">LIGHT</span>
+                <div class="theme-switch">
+                    <div class="theme-switch-handle"></div>
+                </div>
+                <span class="theme-label">DARK</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<main class="main-content">
+    
+    <!-- HERO -->
+    <section id="home" class="hero-section">
+        <div class="hero-content reveal">
+            <h2 class="hero-greeting">HI, I'M</h2>
+            <h1 class="hero-name glitch" data-text="LUFIKA">LUFIKA</h1>
+            <div class="hero-roles">UI/UX Designer • Front-End Developer<br>Aspiring AI Engineer <span class="pixel-star">✦</span></div>
+            
+            <div class="hero-terminal pixel-box">
+                <p>I design and build immersive digital experiences with <span style="color:var(--accent3)">code</span> &amp; <span style="color:var(--accent)">creativity</span>.<span class="cursor-blink">_</span></p>
+            </div>
+            
+            <div class="hero-actions">
+                <a href="#projects" class="px-btn btn-primary">
+                    <span class="btn-icon">▶</span> START JOURNEY
+                </a>
+                <a href="#about" class="px-btn btn-outline">
+                    <span class="btn-icon">&lt;/&gt;</span> VIEW WORK
+                </a>
+            </div>
+            
+            <div class="scroll-down">
+                SCROLL DOWN <span class="arrow">v</span>
+            </div>
+        </div>
+        
+        <div class="hero-visual reveal fade-left">
+            <div class="pixel-character-container">
+                <div class="floating-gem"></div>
+                <div class="pixel-character">
+                    <img src="https://i.pinimg.com/originals/80/9f/1d/809f1d7f767e422406872cdd5642be86.gif" alt="Pixel Character" onerror="this.style.display='none'">
+                </div>
+                <div class="floating-island"></div>
+            </div>
+            
+            <div class="status-card pixel-box">
+                <div class="status-header">
+                    <span style="color:var(--accent2)">✦ STATUS</span>
+                    <span style="color:var(--text3)">STATS_</span>
+                </div>
+                <div class="stat-list">
+                    <div class="stat-item">
+                        <div class="stat-info"><span>Creativity</span><span>95</span></div>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 95%; background: var(--accent2)"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-info"><span>Problem Solving</span><span>90</span></div>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 90%; background: var(--accent4)"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-info"><span>Code Level</span><span>85</span></div>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 85%; background: var(--accent3)"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-info"><span>Coffee</span><span>100</span></div>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 100%; background: var(--accent5)"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT & SKILLS (Split Layout) -->
+    <div class="grid-layout-2">
+        <!-- ABOUT -->
+        <section id="about" class="reveal">
+            <div class="section-header">
+                <span class="section-icon" style="color:var(--accent2)">✦</span> ABOUT ME
+            </div>
+            <div class="pixel-box card-content about-card">
+                <div class="about-grid">
+                    <div class="about-img-frame">
+                        <div class="corner-deco tl"></div>
+                        <div class="corner-deco tr"></div>
+                        <div class="corner-deco bl"></div>
+                        <div class="corner-deco br"></div>
+                        <img src="img/pp-me.png" alt="Lufika Ayu Fatimah" onerror="this.src='https://i.pinimg.com/736x/80/9f/1d/809f1d7f767e422406872cdd5642be86.jpg'" />
+                    </div>
+                    <div class="about-text">
+                        <p>I'm passionate about crafting beautiful interfaces and building interactive web experiences.</p>
+                        <p>I combine design thinking with clean code to create digital products that are not only functional, but also meaningful.</p>
+                        <div class="tag-cloud">
+                            <span class="px-badge" style="background:rgba(199,146,234,0.2);color:var(--accent2);border-color:var(--accent2)">UI/UX DESIGN</span>
+                            <span class="px-badge" style="background:rgba(137,221,255,0.2);color:var(--accent3);border-color:var(--accent3)">FRONT-END</span>
+                            <span class="px-badge" style="background:rgba(195,232,141,0.2);color:var(--accent4);border-color:var(--accent4)">AI ENTHUSIAST</span>
+                            <span class="px-badge" style="background:rgba(255,203,107,0.2);color:var(--accent5);border-color:var(--accent5)">CREATIVE THINKER</span>
+                            <span class="px-badge" style="background:rgba(255,203,107,0.2);color:var(--accent5);border-color:var(--accent5)">PROBLEM SOLVER</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="reveal fade-left">
+            <div class="section-header">
+                <span class="section-icon" style="color:var(--accent4)">✚</span> MY SKILLS
+            </div>
+            <div class="pixel-box card-content skills-card">
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="category-title" style="color:var(--accent)">DESIGN</h3>
+                        <ul class="skill-list">
+                            <li><span class="icon">🎨</span> UI/UX Design</li>
+                            <li><span class="icon">📐</span> Wireframing</li>
+                            <li><span class="icon">📱</span> Prototyping</li>
+                            <li><span class="icon">🧩</span> Design Systems</li>
+                            <li><span class="icon">🔬</span> User Research</li>
+                            <li><span class="icon">✨</span> Interaction Design</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="category-title" style="color:var(--accent3)">FRONT-END</h3>
+                        <ul class="skill-list">
+                            <li><span class="icon">🛡️</span> HTML5</li>
+                            <li><span class="icon">🎨</span> CSS3</li>
+                            <li><span class="icon">⚡</span> JavaScript</li>
+                            <li><span class="icon">⚛️</span> React JS</li>
+                            <li><span class="icon">💨</span> Tailwind CSS</li>
+                            <li><span class="icon">📱</span> Responsive UI</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="category-title" style="color:var(--accent5)">TOOLS</h3>
+                        <ul class="skill-list">
+                            <li><span class="icon">✒️</span> Figma</li>
+                            <li><span class="icon">💻</span> VS Code</li>
+                            <li><span class="icon">🐙</span> GitHub</li>
+                            <li><span class="icon">🖌️</span> Canva</li>
+                            <li><span class="icon">🟢</span> Node.js</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="mt-section">
+        <div class="section-title-wrap reveal">
+            <div class="section-header">
+                <span class="section-icon" style="color:var(--accent5)">★</span> FEATURED PROJECTS
+            </div>
+            <a href="https://github.com/lufikaZkl30" target="_blank" class="view-all-link">VIEW ALL <span class="arrow">→</span></a>
+        </div>
+        
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <div class="pixel-box project-card reveal">
+                <div class="project-img">
+                    <img src="img/project-1.png" alt="ClassTeams-Info" onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600&auto=format&fit=crop'">
+                    <div class="badge-float" style="background:var(--accent2)">NEW</div>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">AI Decision Web App</h3>
+                    <p class="project-desc">AI-powered decision support system with smart recommendations.</p>
+                    <div class="project-tags">
+                        <span class="px-badge tag-blue">React</span>
+                        <span class="px-badge tag-green">Python</span>
+                        <span class="px-badge tag-yellow">Tailwind</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-text"><span class="icon">▶</span> DEMO</a>
+                        <a href="https://github.com/lufikaZkl30/classteams-info" class="btn-text"><span class="icon">&lt;/&gt;</span> CODE</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="pixel-box project-card reveal">
+                <div class="project-img">
+                    <img src="img/project-2.png" alt="YT Emotion Analyzer" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=600&auto=format&fit=crop'">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Portfolio Website</h3>
+                    <p class="project-desc">Personal portfolio with pixel game aesthetics and dark mode.</p>
+                    <div class="project-tags">
+                        <span class="px-badge tag-yellow">HTML</span>
+                        <span class="px-badge tag-blue">Tailwind</span>
+                        <span class="px-badge tag-green">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="btn-text"><span class="icon">▶</span> DEMO</a>
+                        <a href="https://github.com/lufikaZkl30/yt-emotion-analyzer" class="btn-text"><span class="icon">&lt;/&gt;</span> CODE</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="pixel-box project-card reveal">
+                <div class="project-img">
+                    <img src="img/project-3.png" alt="Design Link Bio" onerror="this.src='https://images.unsplash.com/photo-1618761714954-0b8cd0026356?q=80&w=600&auto=format&fit=crop'">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Dashboard UI</h3>
+                    <p class="project-desc">Modern dashboard interface for analytics and management.</p>
+                    <div class="project-tags">
+                        <span class="px-badge tag-yellow">Figma</span>
+                        <span class="px-badge tag-blue">React</span>
+                        <span class="px-badge tag-green">Chart.js</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://luviasakura-bio.netlify.app" target="_blank" class="btn-text"><span class="icon">▶</span> DEMO</a>
+                        <a href="#" class="btn-text"><span class="icon">&lt;/&gt;</span> CODE</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="pixel-box project-card reveal">
+                <div class="project-img">
+                    <img src="img/project-4.png" alt="MindEase AI" onerror="this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=600&auto=format&fit=crop'">
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Landing Page Concept</h3>
+                    <p class="project-desc">Creative landing page concept for tech startup product.</p>
+                    <div class="project-tags">
+                        <span class="px-badge tag-magenta">Figma</span>
+                        <span class="px-badge tag-blue">Tailwind</span>
+                        <span class="px-badge tag-green">UI Design</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://mindease-ai.netlify.app/" target="_blank" class="btn-text"><span class="icon">▶</span> DEMO</a>
+                        <a href="#" class="btn-text"><span class="icon">&lt;/&gt;</span> CODE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE & LEARNING -->
+    <div class="grid-layout-2 mt-section">
+        <!-- EXPERIENCE -->
+        <section id="experience" class="reveal">
+            <div class="section-header">
+                <span class="section-icon" style="color:var(--accent3)">⏱</span> EXPERIENCE
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="border-color:var(--accent2); color:var(--accent2)">💼</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023 — Present</div>
+                        <h3 class="timeline-role" style="color:var(--accent2)">Freelance UI Designer</h3>
+                        <p class="timeline-desc">Working with clients to design user interfaces, wireframes, and responsive websites.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="border-color:var(--accent4); color:var(--accent4)">🏆</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2023</div>
+                        <h3 class="timeline-role" style="color:var(--accent4)">Salesforce Talent Accelerator Program</h3>
+                        <p class="timeline-desc">Completed intensive digital program focused on Salesforce fundamentals, CRM, and business processes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot" style="border-color:var(--accent3); color:var(--accent3)">🚀</div>
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 — 2023</div>
+                        <h3 class="timeline-role" style="color:var(--accent3)">UI/UX Project Experience</h3>
+                        <p class="timeline-desc">Collaborated on multiple UI/UX projects including landing pages, dashboards, and web applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CURRENTLY LEARNING -->
+        <section class="reveal fade-left">
+            <div class="section-header">
+                <span class="section-icon" style="color:var(--accent)">⚔</span> CURRENTLY LEARNING
+            </div>
+            <div class="pixel-box card-content learning-card">
+                <div class="stat-list">
+                    <div class="stat-item">
+                        <div class="stat-info">
+                            <span class="flex items-center gap-2">
+                                <span class="icon">⚛️</span> Advanced React
+                            </span>
+                            <span>70%</span>
+                        </div>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 70%; background:var(--accent2)"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-info">
+                            <span class="flex items-center gap-2">
+                                <span class="icon">N</span> Next.js
+                            </span>
+                            <span>60%</span>
+                        </div>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 60%; background:var(--accent2)"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-info">
+                            <span class="flex items-center gap-2">
+                                <span class="icon">🤖</span> AI / Machine Learning
+                            </span>
+                            <span>50%</span>
+                        </div>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 50%; background:var(--accent2)"></div></div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-info">
+                            <span class="flex items-center gap-2">
+                                <span class="icon">🌸</span> Three.js Animation
+                            </span>
+                            <span>88%</span>
+                        </div>
+                        <div class="stat-bar"><div class="stat-fill" style="width: 88%; background:var(--accent)"></div></div>
+                    </div>
+                </div>
+                
+                <div class="learning-footer">
+                    <div class="learning-footer-text">
+                        LEVEL UP YOUR SKILLS.<br>UNLOCK THE FUTURE.
+                    </div>
+                    <div class="learning-footer-icon">
+                        <img src="https://i.pinimg.com/originals/80/9f/1d/809f1d7f767e422406872cdd5642be86.gif" alt="Level Up" style="width:40px; height:40px; object-fit:contain" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer id="contact" class="mt-section">
+    <div class="footer-grid">
+        <!-- CTA -->
+        <div class="pixel-box footer-cta reveal">
+            <h2 class="footer-title">LET'S BUILD SOMETHING<br><span style="color:var(--accent2)">AMAZING TOGETHER!</span></h2>
+            <div class="footer-cta-flex">
+                <p class="footer-desc">I'm open for freelance projects and exciting opportunities.</p>
+                <div class="chest-icon">📦</div>
+            </div>
+        </div>
+        
+        <!-- CONTACT -->
+        <div class="pixel-box footer-contact reveal fade-left">
+            <h3 class="footer-subtitle">CONTACT ME</h3>
+            <ul class="contact-links">
+                <li>
+                    <a href="mailto:lufikabgy337@gmail.com">
+                        <span class="icon">✉</span> lufikabgy337@gmail.com
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/lufikaZkl30" target="_blank">
+                        <span class="icon">🐙</span> github.com/lufikaZkl30
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/lufikaayu" target="_blank">
+                        <span class="icon">💼</span> linkedin.com/in/lufikaayu
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- THANKS -->
+        <div class="pixel-box footer-thanks reveal fade-left" style="transition-delay: 0.1s">
+            <h3 class="footer-subtitle">THANKS FOR VISITING!</h3>
+            <p class="footer-desc" style="margin-bottom:16px">Press Start to Connect</p>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <a href="mailto:lufikabgy337@gmail.com" class="px-btn btn-primary">
+                    ▶ START
+                </a>
+                <div class="mini-char">👾</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>© 2024 LUFIKA. All rights reserved.</p>
+        <button onclick="window.scrollTo({top:0,behavior:'smooth'})" class="back-to-top px-btn">
+            ↑ TOP
+        </button>
+    </div>
+</footer>
+
+<script>
+    /* Theme Toggle */
+    function toggleTheme() {
+        const html = document.documentElement;
+        const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+    }
+    
+    (function() {
+        const saved = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', saved);
+    })();
+
+    /* Scroll Reveal */
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* Active Nav Link */
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const nav = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(s => {
+            if (window.scrollY >= s.offsetTop - 150) current = s.id;
+        });
+        navLinks.forEach(a => {
+            a.style.color = '';
+            if (a.getAttribute('href') === '#' + current) {
+                a.style.color = 'var(--text-main)';
+            }
+        });
+        
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    }, { passive: true });
+</script>
+</body>
+</html>
